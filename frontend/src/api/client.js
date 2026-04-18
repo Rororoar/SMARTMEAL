@@ -64,6 +64,9 @@ export const recipeApi = {
     const query = new URLSearchParams(params).toString();
     return apiFetch(`/recipes/search?${query}`);
   },
+  get(id) {
+    return apiFetch(`/recipes/${id}`);
+  },
   save(recipe) {
     return apiFetch("/recipes/saved", {
       method: "POST",
@@ -97,6 +100,22 @@ export const mealPlanApi = {
     return apiFetch("/meal-plans/current/meals", {
       method: "POST",
       body: JSON.stringify({ recipe, ...payload })
+    });
+  },
+  removeMeal(planId, mealId) {
+    return apiFetch(`/meal-plans/${planId}/meals/${mealId}`, {
+      method: "DELETE"
+    });
+  },
+  clearDay(planId, date) {
+    return apiFetch(`/meal-plans/${planId}/days`, {
+      method: "DELETE",
+      body: JSON.stringify({ date })
+    });
+  },
+  clearWeek(planId) {
+    return apiFetch(`/meal-plans/${planId}`, {
+      method: "DELETE"
     });
   },
   toggleGrocery(planId, itemId, purchased) {

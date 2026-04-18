@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function RecipeTile({
   recipe,
   onSave,
@@ -11,12 +13,16 @@ export default function RecipeTile({
 
   return (
     <article className="recipe-tile">
-      <img src={image} alt="" />
+      <Link className="recipe-image-link" to={`/recipes/${recipe.spoonacularId}`}>
+        <img src={image} alt="" />
+      </Link>
       <div className="recipe-copy">
         <span>{recipe.readyInMinutes || 30} min</span>
-        <h3>{recipe.title}</h3>
+        <h3>
+          <Link to={`/recipes/${recipe.spoonacularId}`}>{recipe.title}</Link>
+        </h3>
         <p>
-          {recipe.nutrition?.calories || "N/A"} kcal · {recipe.nutrition?.protein || "N/A"} protein
+          {recipe.nutrition?.calories || "N/A"} kcal - {recipe.nutrition?.protein || "N/A"} protein
         </p>
         {onSave && (
           <div className="recipe-actions">
@@ -34,3 +40,4 @@ export default function RecipeTile({
     </article>
   );
 }
+

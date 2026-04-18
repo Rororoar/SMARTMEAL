@@ -97,6 +97,9 @@ POST  /api/meal-plans/current/meals
 GET   /api/meal-plans/current
 GET   /api/meal-plans/history
 GET   /api/meal-plans/:id
+DELETE /api/meal-plans/:id/meals/:mealId
+DELETE /api/meal-plans/:id/days
+DELETE /api/meal-plans/:id
 PATCH /api/meal-plans/:id/grocery/:itemId
 PATCH /api/meal-plans/:id/prep/:taskId
 ```
@@ -350,6 +353,27 @@ http://localhost:5173
 10. Deploy frontend to Vercel.
 11. Set `VITE_API_URL` on Vercel to your live backend URL plus `/api`.
 12. Set `CLIENT_URL` on the backend host to your live Vercel frontend URL.
+
+## Render Deployment Fixes
+
+If Render logs show:
+
+```text
+Invalid scheme, expected connection string to start with "mongodb://" or "mongodb+srv://"
+```
+
+the `MONGODB_URI` environment variable was entered incorrectly in Render.
+
+In Render, the environment variable must be:
+
+```text
+Key:   MONGODB_URI
+Value: mongodb+srv://your_db_user:your_password@your-cluster-host.mongodb.net/smartmeal?retryWrites=true&w=majority&appName=Cluster0
+```
+
+Do not paste `MONGODB_URI=` into the Value box. The Value must start directly with `mongodb+srv://`.
+
+The backend is pinned to Node 22 LTS for Render using `backend/.node-version` and `backend/package.json`.
 
 ## Simple Explanation For Viva
 

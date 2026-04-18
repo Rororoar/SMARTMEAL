@@ -6,6 +6,7 @@ import Grocery from "./pages/Grocery";
 import History from "./pages/History";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
+import RecipeDetail from "./pages/RecipeDetail";
 import Recipes from "./pages/Recipes";
 import Register from "./pages/Register";
 
@@ -39,6 +40,7 @@ export default function App() {
         <Route index element={<Dashboard />} />
         <Route path="profile" element={<Profile />} />
         <Route path="recipes" element={<Recipes />} />
+        <Route path="recipes/:id" element={<RecipeDetail />} />
         <Route path="grocery" element={<Grocery />} />
         <Route path="history" element={<History />} />
       </Route>
@@ -46,4 +48,3 @@ export default function App() {
     </Routes>
   );
 }
-

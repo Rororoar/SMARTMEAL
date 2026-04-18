@@ -31,6 +31,13 @@ const mealItemSchema = new mongoose.Schema(
       servings: Number,
       sourceUrl: String,
       summary: String,
+      instructions: String,
+      steps: [
+        {
+          number: Number,
+          step: String
+        }
+      ],
       nutrition: nutritionSchema,
       ingredients: [ingredientSchema]
     }
@@ -85,4 +92,3 @@ const mealPlanSchema = new mongoose.Schema(
 mealPlanSchema.index({ user: 1, weekStart: 1 }, { unique: true });
 
 module.exports = mongoose.model("MealPlan", mealPlanSchema);
-

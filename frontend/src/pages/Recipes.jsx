@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import { mealPlanApi, recipeApi } from "../api/client";
+import { recipeApi } from "../api/client";
+import AddToPlanDialog from "../components/AddToPlanDialog";
 import RecipeTile from "../components/RecipeTile";
 
 export default function Recipes() {
-  const [query, setQuery] = useState("chicken");
+  const [query, setQuery] = useState("");
   const [diet, setDiet] = useState("");
   const [recommended, setRecommended] = useState([]);
   const [recipes, setRecipes] = useState([]);
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [status, setStatus] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -47,15 +49,10 @@ export default function Recipes() {
     }
   }
 
-  async function addToPlan(recipe) {
+  function openAddToPlan(recipe) {
     setError("");
     setStatus("");
-    try {
-      const data = await mealPlanApi.addRecipeToCurrent(recipe);
-      setStatus(data.message || "Recipe added to this week's plan.");
-    } catch (err) {
-      setError(err.message);
-    }
+    setSelectedRecipe(recipe);
   }
 
   return (
@@ -68,7 +65,7 @@ export default function Recipes() {
       </section>
 
       <form className="search-bar" onSubmit={handleSearch}>
-        <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search recipe" />
+        <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search here, for example chicken" />
         <select value={diet} onChange={(event) => setDiet(event.target.value)}>
           <option value="">Any diet</option>
           <option value="vegetarian">Vegetarian</option>
@@ -100,7 +97,7 @@ export default function Recipes() {
             recipe={recipe}
             onSave={saveRecipe}
             buttonLabel="Save recipe"
-            secondaryAction={addToPlan}
+            secondaryAction={openAddToPlan}
             secondaryLabel="Add to plan"
           />
         ))}
@@ -118,11 +115,18 @@ export default function Recipes() {
             recipe={recipe}
             onSave={saveRecipe}
             buttonLabel="Save recipe"
-            secondaryAction={addToPlan}
+            secondaryAction={openAddToPlan}
             secondaryLabel="Add to plan"
           />
         ))}
       </section>
+      <AddToPlanDialog
+        recipe={selectedRecipe}
+        open={Boolean(selectedRecipe)}
+        onClose={() => setSelectedRecipe(null)}
+        onAdded={setStatus}
+        onError={setError}
+      />
     </main>
   );
 }

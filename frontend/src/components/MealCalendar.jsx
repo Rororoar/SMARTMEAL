@@ -13,7 +13,18 @@ function groupMeals(meals) {
   }, {});
 }
 
-export default function MealCalendar({ mealPlan }) {
+function buildWeekDays(mealPlan) {
+  const start = mealPlan?.weekStart ? new Date(mealPlan.weekStart) : new Date();
+  start.setHours(0, 0, 0, 0);
+
+  return Array.from({ length: 7 }, (_, index) => {
+    const date = new Date(start);
+    date.setDate(start.getDate() + index);
+    return date;
+  });
+}
+
+export default function MealCalendar({ mealPlan, onRemoveMeal, onClearDay }) {
   if (!mealPlan?.meals?.length) {
     return (
       <section className="empty-state">
@@ -24,13 +35,23 @@ export default function MealCalendar({ mealPlan }) {
   }
 
   const grouped = groupMeals(mealPlan.meals);
+  const days = buildWeekDays(mealPlan);
 
   return (
     <section className="calendar-grid" aria-label="Weekly meal calendar">
-      {Object.entries(grouped).map(([date, meals]) => (
+      {days.map((day) => {
+        const date = day.toDateString();
+        const meals = grouped[date] || [];
+
+        return (
         <article className="day-column" key={date}>
           <div className="day-heading">
-            <span>{dayFormatter.format(new Date(date))}</span>
+            <span>{dayFormatter.format(day)}</span>
+            {meals.length > 0 && (
+              <button type="button" className="text-button danger-link" onClick={() => onClearDay?.(day.toISOString())}>
+                Clear day
+              </button>
+            )}
           </div>
           {meals.map((meal) => (
             <div className="meal-row" key={meal._id || `${date}-${meal.mealType}`}>
@@ -45,13 +66,18 @@ export default function MealCalendar({ mealPlan }) {
                 <span className="meal-type">{meal.mealType}</span>
                 <strong>{meal.recipe.title}</strong>
                 <small>
-                  {meal.recipe.readyInMinutes || 30} min · {meal.recipe.nutrition?.calories || "N/A"} kcal
+                  {meal.recipe.readyInMinutes || 30} min - {meal.recipe.nutrition?.calories || "N/A"} kcal
                 </small>
+                <button type="button" className="text-button danger-link" onClick={() => onRemoveMeal?.(meal)}>
+                  Remove dish
+                </button>
               </div>
             </div>
           ))}
+          {meals.length === 0 && <p className="empty-day">No dish planned</p>}
         </article>
-      ))}
+        );
+      })}
     </section>
   );
 }

@@ -12,6 +12,21 @@ function addDays(date, days) {
   return result;
 }
 
+function isSameDay(first, second) {
+  const firstDate = new Date(first);
+  const secondDate = new Date(second);
+
+  return (
+    firstDate.getFullYear() === secondDate.getFullYear() &&
+    firstDate.getMonth() === secondDate.getMonth() &&
+    firstDate.getDate() === secondDate.getDate()
+  );
+}
+
+function syncGroceryList(mealPlan) {
+  mealPlan.groceryItems = buildGroceryList(mealPlan.meals);
+}
+
 const generate = asyncHandler(async (req, res) => {
   const profile = await Profile.findOneAndUpdate(
     { user: req.user._id },
@@ -85,7 +100,10 @@ const addRecipeToCurrent = asyncHandler(async (req, res) => {
   );
 
   const alreadyAdded = mealPlan.meals.some(
-    (meal) => meal.recipe?.spoonacularId === Number(recipe.spoonacularId)
+    (meal) =>
+      meal.recipe?.spoonacularId === Number(recipe.spoonacularId) &&
+      meal.mealType === mealType &&
+      isSameDay(meal.date, mealDate)
   );
 
   if (!alreadyAdded) {
@@ -148,6 +166,77 @@ const togglePrepTask = asyncHandler(async (req, res) => {
   res.json({ mealPlan });
 });
 
+const removeMeal = asyncHandler(async (req, res) => {
+  const mealPlan = await MealPlan.findOne({ _id: req.params.id, user: req.user._id });
+
+  if (!mealPlan) {
+    res.status(404);
+    throw new Error("Meal plan not found");
+  }
+
+  const meal = mealPlan.meals.id(req.params.mealId);
+  if (!meal) {
+    res.status(404);
+    throw new Error("Dish not found in this meal plan");
+  }
+
+  const mealDate = meal.date;
+  const mealType = meal.mealType;
+  const recipeTitle = meal.recipe?.title;
+
+  mealPlan.meals.pull({ _id: req.params.mealId });
+  mealPlan.prepTasks = mealPlan.prepTasks.filter((task) => {
+    const sameSlot = isSameDay(task.date, mealDate) && task.mealType === mealType;
+    const sameRecipe = recipeTitle ? task.label.includes(recipeTitle) : true;
+    return !(sameSlot && sameRecipe);
+  });
+
+  syncGroceryList(mealPlan);
+  await mealPlan.save();
+
+  res.json({ mealPlan, message: "Dish removed from the plan." });
+});
+
+const clearDay = asyncHandler(async (req, res) => {
+  const { date } = req.body;
+
+  if (!date) {
+    res.status(400);
+    throw new Error("Date is required");
+  }
+
+  const mealPlan = await MealPlan.findOne({ _id: req.params.id, user: req.user._id });
+
+  if (!mealPlan) {
+    res.status(404);
+    throw new Error("Meal plan not found");
+  }
+
+  mealPlan.meals = mealPlan.meals.filter((meal) => !isSameDay(meal.date, date));
+  mealPlan.prepTasks = mealPlan.prepTasks.filter((task) => !isSameDay(task.date, date));
+
+  syncGroceryList(mealPlan);
+  await mealPlan.save();
+
+  res.json({ mealPlan, message: "Day cleared from the plan." });
+});
+
+const clearWeek = asyncHandler(async (req, res) => {
+  const mealPlan = await MealPlan.findOne({ _id: req.params.id, user: req.user._id });
+
+  if (!mealPlan) {
+    res.status(404);
+    throw new Error("Meal plan not found");
+  }
+
+  mealPlan.meals = [];
+  mealPlan.groceryItems = [];
+  mealPlan.prepTasks = [];
+  await mealPlan.save();
+
+  res.json({ mealPlan, message: "Weekly plan cleared." });
+});
+
 module.exports = {
   generate,
   current,
@@ -155,5 +244,8 @@ module.exports = {
   history,
   addRecipeToCurrent,
   toggleGroceryItem,
-  togglePrepTask
+  togglePrepTask,
+  removeMeal,
+  clearDay,
+  clearWeek
 };

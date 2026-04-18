@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { mealPlanApi, recipeApi } from "../api/client";
+import AddToPlanDialog from "../components/AddToPlanDialog";
 import RecipeTile from "../components/RecipeTile";
 
 export default function History() {
   const [mealPlans, setMealPlans] = useState([]);
   const [savedRecipes, setSavedRecipes] = useState([]);
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [status, setStatus] = useState("");
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -21,6 +24,16 @@ export default function History() {
     setSavedRecipes(data.savedRecipes);
   }
 
+  function mealRows() {
+    return mealPlans.flatMap((plan) =>
+      plan.meals.map((meal) => ({
+        ...meal,
+        planId: plan._id,
+        weekStart: plan.weekStart
+      }))
+    );
+  }
+
   return (
     <main className="page-surface">
       <section className="page-heading">
@@ -31,6 +44,7 @@ export default function History() {
       </section>
 
       {error && <p className="form-error">{error}</p>}
+      {status && <p className="form-status">{status}</p>}
 
       <section className="section-title">
         <h3>Saved recipes</h3>
@@ -43,23 +57,36 @@ export default function History() {
             recipe={recipe}
             onSave={removeSaved}
             buttonLabel="Remove"
+            secondaryAction={setSelectedRecipe}
+            secondaryLabel="Add to plan"
           />
         ))}
       </section>
 
       <section className="history-list">
         <div className="section-title">
-          <h3>Meal plan history</h3>
-          <p>Recent generated weeks.</p>
+          <h3>Meals by date</h3>
+          <p>Meals already added or generated in recent plans.</p>
         </div>
-        {mealPlans.map((plan) => (
-          <article key={plan._id} className="history-row">
-            <strong>{new Date(plan.weekStart).toLocaleDateString()} week</strong>
-            <span>{plan.meals.length} meals</span>
-            <span>{plan.groceryItems.length} grocery items</span>
+        {mealRows().map((meal) => (
+          <article key={meal._id || `${meal.planId}-${meal.date}-${meal.recipe?.spoonacularId}`} className="history-row meal-history-row">
+            <strong>{new Date(meal.date).toLocaleDateString()}</strong>
+            <span>{meal.mealType}</span>
+            <span>{meal.recipe?.title}</span>
+            <button type="button" className="secondary-button" onClick={() => setSelectedRecipe(meal.recipe)}>
+              Add to plan
+            </button>
           </article>
         ))}
+        {mealRows().length === 0 && <p className="empty-state">No meal history yet.</p>}
       </section>
+      <AddToPlanDialog
+        recipe={selectedRecipe}
+        open={Boolean(selectedRecipe)}
+        onClose={() => setSelectedRecipe(null)}
+        onAdded={setStatus}
+        onError={setError}
+      />
     </main>
   );
 }

@@ -7,6 +7,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
   const [error, setError] = useState("");
+  const [status, setStatus] = useState("");
 
   useEffect(() => {
     mealPlanApi
@@ -26,6 +27,7 @@ export default function Dashboard() {
 
   async function generatePlan() {
     setError("");
+    setStatus("");
     setGenerating(true);
     try {
       const data = await mealPlanApi.generate();
@@ -42,6 +44,48 @@ export default function Dashboard() {
     setMealPlan(data.mealPlan);
   }
 
+  async function removeMeal(meal) {
+    if (!mealPlan?._id || !meal?._id) return;
+
+    setError("");
+    setStatus("");
+    try {
+      const data = await mealPlanApi.removeMeal(mealPlan._id, meal._id);
+      setMealPlan(data.mealPlan);
+      setStatus(data.message || "Dish removed from the plan.");
+    } catch (err) {
+      setError(err.message);
+    }
+  }
+
+  async function clearDay(date) {
+    if (!mealPlan?._id) return;
+
+    setError("");
+    setStatus("");
+    try {
+      const data = await mealPlanApi.clearDay(mealPlan._id, date);
+      setMealPlan(data.mealPlan);
+      setStatus(data.message || "Day cleared from the plan.");
+    } catch (err) {
+      setError(err.message);
+    }
+  }
+
+  async function clearWeek() {
+    if (!mealPlan?._id) return;
+
+    setError("");
+    setStatus("");
+    try {
+      const data = await mealPlanApi.clearWeek(mealPlan._id);
+      setMealPlan(data.mealPlan);
+      setStatus(data.message || "Weekly plan cleared.");
+    } catch (err) {
+      setError(err.message);
+    }
+  }
+
   if (loading) {
     return <main className="page-surface">Loading weekly plan...</main>;
   }
@@ -53,12 +97,20 @@ export default function Dashboard() {
           <p className="eyebrow">Weekly Plan</p>
           <h2>Meals, groceries and prep tasks in one flow.</h2>
         </div>
-        <button type="button" onClick={generatePlan} disabled={generating}>
-          {generating ? "Generating..." : "Generate meal plan"}
-        </button>
+        <div className="heading-actions">
+          <button type="button" onClick={generatePlan} disabled={generating}>
+            {generating ? "Generating..." : "Generate meal plan"}
+          </button>
+          {mealPlan?.meals?.length > 0 && (
+            <button type="button" className="secondary-button danger-button" onClick={clearWeek}>
+              Clear week
+            </button>
+          )}
+        </div>
       </section>
 
       {error && <p className="form-error">{error}</p>}
+      {status && <p className="form-status">{status}</p>}
 
       <section className="metrics-band" aria-label="Plan summary">
         <div>
@@ -79,7 +131,7 @@ export default function Dashboard() {
         </div>
       </section>
 
-      <MealCalendar mealPlan={mealPlan} />
+      <MealCalendar mealPlan={mealPlan} onRemoveMeal={removeMeal} onClearDay={clearDay} />
 
       {mealPlan?.prepTasks?.length > 0 && (
         <section className="task-list">

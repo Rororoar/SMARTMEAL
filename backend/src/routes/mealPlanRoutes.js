@@ -6,7 +6,10 @@ const {
   history,
   addRecipeToCurrent,
   toggleGroceryItem,
-  togglePrepTask
+  togglePrepTask,
+  removeMeal,
+  clearDay,
+  clearWeek
 } = require("../controllers/mealPlanController");
 const { protect } = require("../middleware/authMiddleware");
 
@@ -18,6 +21,9 @@ router.post("/current/meals", addRecipeToCurrent);
 router.get("/current", current);
 router.get("/history", history);
 router.get("/:id", show);
+router.delete("/:id/meals/:mealId", removeMeal);
+router.delete("/:id/days", clearDay);
+router.delete("/:id", clearWeek);
 router.patch("/:id/grocery/:itemId", toggleGroceryItem);
 router.patch("/:id/prep/:taskId", togglePrepTask);
 

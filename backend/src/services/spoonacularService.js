@@ -45,6 +45,26 @@ function nutrientText(recipe, name) {
 }
 
 function normalizeRecipe(recipe) {
+  const analyzedSteps = recipe.analyzedInstructions?.flatMap((instruction) => instruction.steps || []) || [];
+  const plainInstructions = recipe.instructions
+    ? recipe.instructions
+        .replace(/<[^>]+>/g, "")
+        .split(/\.\s+/)
+        .map((step) => step.trim())
+        .filter(Boolean)
+    : [];
+  const ingredientNames = (recipe.extendedIngredients || [])
+    .slice(0, 4)
+    .map((ingredient) => ingredient.nameClean || ingredient.name || ingredient.originalName)
+    .filter(Boolean);
+  const fallbackSteps = [
+    `Prepare the ingredients${ingredientNames.length ? `: ${ingredientNames.join(", ")}` : ""}.`,
+    "Wash, trim and cut the ingredients before cooking.",
+    "Cook the main ingredients over medium heat until they are tender and safe to eat.",
+    "Combine the cooked ingredients, season to taste and adjust the texture if needed.",
+    "Serve warm and store leftovers in a sealed container."
+  ];
+
   return {
     spoonacularId: recipe.id,
     title: recipe.title,
@@ -53,6 +73,16 @@ function normalizeRecipe(recipe) {
     servings: recipe.servings,
     sourceUrl: recipe.sourceUrl,
     summary: recipe.summary ? recipe.summary.replace(/<[^>]+>/g, "") : "",
+    instructions: recipe.instructions ? recipe.instructions.replace(/<[^>]+>/g, "") : "",
+    steps: analyzedSteps.length
+      ? analyzedSteps.map((step) => ({
+          number: step.number,
+          step: step.step
+        }))
+      : (plainInstructions.length ? plainInstructions : fallbackSteps).map((step, index) => ({
+          number: index + 1,
+          step: step.endsWith(".") ? step : `${step}.`
+        })),
     nutrition: {
       calories: nutrientAmount(recipe, "Calories"),
       protein: nutrientText(recipe, "Protein"),

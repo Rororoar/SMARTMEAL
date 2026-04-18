@@ -142,7 +142,31 @@ a {
   color: #9e3f26;
 }
 
+.danger-link {
+  color: #9e2f23;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.meal-row .danger-link {
+  color: #9e2f23;
+}
+
+.danger-button {
+  color: #9e2f23;
+}
+
+.heading-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
 .page-surface {
+  background:
+    linear-gradient(135deg, rgba(47, 125, 87, 0.09) 0 25%, transparent 25% 50%, rgba(217, 93, 57, 0.06) 50% 75%, transparent 75%) 0 0 / 42px 42px,
+    linear-gradient(180deg, #fbfcfa 0%, #f0f6f2 100%);
   padding: 2rem;
 }
 
@@ -152,7 +176,7 @@ a {
   gap: 1rem;
   justify-content: space-between;
   margin: 0 auto 1.5rem;
-  max-width: 1180px;
+  max-width: 1320px;
 }
 
 .page-heading h2,
@@ -171,7 +195,7 @@ a {
   gap: 1px;
   grid-template-columns: repeat(4, 1fr);
   margin: 0 auto 1.5rem;
-  max-width: 1180px;
+  max-width: 1320px;
   overflow: hidden;
 }
 
@@ -196,7 +220,7 @@ a {
   gap: 1rem;
   grid-template-columns: repeat(7, minmax(150px, 1fr));
   margin: 0 auto;
-  max-width: 1180px;
+  max-width: 1320px;
   overflow-x: auto;
   padding-bottom: 0.5rem;
 }
@@ -210,9 +234,13 @@ a {
 }
 
 .day-heading {
+  align-items: start;
   background: #f0f5f2;
   border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: 0.5rem;
   font-weight: 800;
+  justify-content: space-between;
   padding: 0.85rem;
 }
 
@@ -253,6 +281,7 @@ a {
 }
 
 .meal-row small,
+.meal-row button,
 .recipe-copy p,
 .section-title p,
 .grocery-row em,
@@ -267,12 +296,12 @@ a {
   display: grid;
   gap: 0.75rem;
   margin: 1.5rem auto 0;
-  max-width: 1180px;
+  max-width: 1320px;
 }
 
 .section-title {
   margin: 1.5rem auto 0.75rem;
-  max-width: 1180px;
+  max-width: 1320px;
 }
 
 .section-title h3 {
@@ -313,6 +342,10 @@ a {
 
 .history-row {
   grid-template-columns: 1fr auto auto;
+}
+
+.meal-history-row {
+  grid-template-columns: 150px 100px 1fr auto;
 }
 
 .profile-form {
@@ -356,15 +389,15 @@ select:focus {
   gap: 0.75rem;
   grid-template-columns: 1fr 210px auto;
   margin: 0 auto 1rem;
-  max-width: 1180px;
+  max-width: 1320px;
 }
 
 .recipe-grid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   margin: 1rem auto 0;
-  max-width: 1180px;
+  max-width: 1320px;
 }
 
 .recipe-grid.compact {
@@ -385,6 +418,22 @@ select:focus {
   border-radius: 0;
   height: 100%;
   width: 128px;
+}
+
+.recipe-image-link,
+.recipe-tile img {
+  display: block;
+  height: 100%;
+}
+
+.recipe-copy a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.recipe-copy a:hover,
+.back-link:hover {
+  color: var(--accent-strong);
 }
 
 .recipe-copy {
@@ -423,6 +472,143 @@ select:focus {
   gap: 0.5rem;
 }
 
+.modal-backdrop {
+  align-items: center;
+  background: rgba(24, 32, 28, 0.58);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 1rem;
+  position: fixed;
+  z-index: 30;
+}
+
+.plan-dialog {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  max-width: 440px;
+  padding: 1.25rem;
+  width: 100%;
+}
+
+.plan-dialog h3 {
+  font-size: 1.35rem;
+  line-height: 1.2;
+  margin: 0 0 1rem;
+}
+
+.plan-dialog form,
+.dialog-actions {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.dialog-actions {
+  grid-template-columns: 1fr 1fr;
+}
+
+.recipe-detail-hero {
+  align-items: stretch;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: minmax(280px, 42%) 1fr;
+  margin: 0 auto 1.25rem;
+  max-width: 1320px;
+  overflow: hidden;
+}
+
+.recipe-detail-hero > img {
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.recipe-detail-hero > div {
+  align-content: center;
+  display: grid;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.recipe-detail-hero h2 {
+  font-size: 3.2rem;
+  line-height: 1;
+  margin: 0;
+}
+
+.recipe-detail-hero p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.back-link {
+  color: var(--coral);
+  text-decoration: none;
+}
+
+.detail-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.detail-metrics span {
+  background: #eef4f0;
+  border-radius: 8px;
+  color: var(--accent-strong);
+  font-weight: 800;
+  padding: 0.55rem 0.7rem;
+}
+
+.recipe-detail-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(280px, 0.8fr) 1.2fr;
+  margin: 0 auto;
+  max-width: 1320px;
+}
+
+.detail-section {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.detail-section h3 {
+  font-size: 1.4rem;
+  margin: 0 0 1rem;
+}
+
+.ingredient-list,
+.step-list {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.ingredient-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.ingredient-list li {
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  padding-bottom: 0.65rem;
+}
+
+.step-list li {
+  line-height: 1.55;
+}
+
 .auth-page {
   display: grid;
   grid-template-columns: 1fr minmax(360px, 520px);
@@ -458,7 +644,7 @@ select:focus {
 .empty-state {
   border-radius: 8px;
   margin: 1rem auto;
-  max-width: 1180px;
+  max-width: 1320px;
   padding: 0.9rem 1rem;
 }
 
@@ -474,7 +660,7 @@ select:focus {
 
 .toast-notice {
   animation: slideDown 220ms ease both;
-  background: var(--accent);
+  background: #18201c;
   border-radius: 8px;
   box-shadow: var(--shadow);
   color: #fff;
@@ -483,6 +669,7 @@ select:focus {
   max-width: calc(100% - 2rem);
   padding: 0.9rem 1.1rem;
   position: fixed;
+  text-align: center;
   top: 1rem;
   transform: translateX(-50%);
   z-index: 20;
@@ -504,6 +691,13 @@ select:focus {
   border: 1px solid var(--line);
 }
 
+.empty-day {
+  color: var(--muted);
+  margin: 0;
+  min-height: 112px;
+  padding: 0.85rem;
+}
+
 @media (max-width: 1100px) {
   .app-shell {
     grid-template-columns: 1fr;
@@ -521,6 +715,15 @@ select:focus {
   .calendar-grid,
   .recipe-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .recipe-detail-hero,
+  .recipe-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recipe-detail-hero > img {
+    min-height: 280px;
   }
 }
 
@@ -579,5 +782,13 @@ select:focus {
 
   .auth-visual {
     display: none;
+  }
+
+  .recipe-detail-hero h2 {
+    font-size: 2.35rem;
+  }
+
+  .dialog-actions {
+    grid-template-columns: 1fr;
   }
 }
