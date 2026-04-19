@@ -1,4 +1,23 @@
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+function normalizeApiUrl(raw) {
+  const fallback = "http://localhost:5000/api";
+  const value = (raw || fallback).trim();
+
+  try {
+    const url = new URL(value);
+
+    // If the user sets only the origin (like https://xyz.onrender.com),
+    // automatically target /api.
+    if (url.pathname === "/" || url.pathname === "") {
+      url.pathname = "/api";
+    }
+
+    return url.toString().replace(/\/$/, "");
+  } catch {
+    return value.replace(/\/$/, "");
+  }
+}
+
+const API_URL = normalizeApiUrl(import.meta.env.VITE_API_URL);
 
 function getToken() {
   return localStorage.getItem("smartmeal_token");

@@ -44,6 +44,13 @@ app.use(
   })
 );
 
+app.get("/", (req, res) => {
+  res.json({
+    service: "SmartMeal API",
+    message: "Backend is running. Use /api/health for status."
+  });
+});
+
 app.get("/api/health", (req, res) => {
   const states = ["disconnected", "connected", "connecting", "disconnecting"];
 
