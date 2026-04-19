@@ -9,6 +9,7 @@ export default function Recipes() {
   const [recommended, setRecommended] = useState([]);
   const [recipes, setRecipes] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [hasSearched, setHasSearched] = useState(false);
   const [status, setStatus] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -26,6 +27,7 @@ export default function Recipes() {
     event.preventDefault();
     setError("");
     setStatus("");
+    setHasSearched(true);
     setLoading(true);
     try {
       const data = await recipeApi.search({ query, diet, number: 12 });
@@ -82,31 +84,37 @@ export default function Recipes() {
       {error && <p className="form-error">{error}</p>}
       {status && <p className="form-status">{status}</p>}
 
-      <section className="section-title">
-        <h3>Recommended for your profile</h3>
-        <p>Uses your saved preferences, allergies and cooking time.</p>
-      </section>
-      {recommendationLoading && <p className="empty-state">Loading recommendations...</p>}
-      {!recommendationLoading && recommended.length === 0 && (
-        <p className="empty-state">Save your profile to improve recommendations.</p>
+      {!hasSearched && (
+        <>
+          <section className="section-title">
+            <h3>Recommended For Your Profile</h3>
+            <p>Uses Your Saved Preferences, Allergies And Cooking Time.</p>
+          </section>
+          {recommendationLoading && <p className="empty-state">Loading Recommendations...</p>}
+          {!recommendationLoading && recommended.length === 0 && (
+            <p className="empty-state">Save Your Profile To Improve Recommendations.</p>
+          )}
+          <section className="recipe-grid compact">
+            {recommended.map((recipe) => (
+              <RecipeTile
+                key={recipe.spoonacularId}
+                recipe={recipe}
+                onSave={saveRecipe}
+                buttonLabel="Save Recipe"
+                secondaryAction={openAddToPlan}
+                secondaryLabel="Add To Plan"
+              />
+            ))}
+          </section>
+        </>
       )}
-      <section className="recipe-grid compact">
-        {recommended.map((recipe) => (
-          <RecipeTile
-            key={recipe.spoonacularId}
-            recipe={recipe}
-            onSave={saveRecipe}
-            buttonLabel="Save recipe"
-            secondaryAction={openAddToPlan}
-            secondaryLabel="Add to plan"
-          />
-        ))}
-      </section>
 
-      <section className="section-title">
-        <h3>Search results</h3>
-        <p>Search for a specific ingredient or diet.</p>
-      </section>
+      {hasSearched && (
+        <section className="section-title">
+          <h3>Search Results</h3>
+          <p>Only Dishes Matching Your Search Are Shown Here.</p>
+        </section>
+      )}
 
       <section className="recipe-grid">
         {recipes.map((recipe) => (
@@ -114,9 +122,9 @@ export default function Recipes() {
             key={recipe.spoonacularId}
             recipe={recipe}
             onSave={saveRecipe}
-            buttonLabel="Save recipe"
+            buttonLabel="Save Recipe"
             secondaryAction={openAddToPlan}
-            secondaryLabel="Add to plan"
+            secondaryLabel="Add To Plan"
           />
         ))}
       </section>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { mealPlanApi, recipeApi } from "../api/client";
 import AddToPlanDialog from "../components/AddToPlanDialog";
 import RecipeTile from "../components/RecipeTile";
@@ -72,13 +73,13 @@ export default function History() {
           <article key={meal._id || `${meal.planId}-${meal.date}-${meal.recipe?.spoonacularId}`} className="history-row meal-history-row">
             <strong>{new Date(meal.date).toLocaleDateString()}</strong>
             <span>{meal.mealType}</span>
-            <span>{meal.recipe?.title}</span>
+            <Link to={`/recipes/${meal.recipe?.spoonacularId}`}>{meal.recipe?.title}</Link>
             <button type="button" className="secondary-button" onClick={() => setSelectedRecipe(meal.recipe)}>
-              Add to plan
+              Add To Plan
             </button>
           </article>
         ))}
-        {mealRows().length === 0 && <p className="empty-state">No meal history yet.</p>}
+        {mealRows().length === 0 && <p className="empty-state">No Meal History Yet.</p>}
       </section>
       <AddToPlanDialog
         recipe={selectedRecipe}

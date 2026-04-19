@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const dayFormatter = new Intl.DateTimeFormat("en", {
   weekday: "short",
   month: "short",
@@ -46,10 +48,10 @@ export default function MealCalendar({ mealPlan, onRemoveMeal, onClearDay }) {
         return (
         <article className="day-column" key={date}>
           <div className="day-heading">
-            <span>{dayFormatter.format(day)}</span>
+            <span className="date-label">{dayFormatter.format(day)}</span>
             {meals.length > 0 && (
               <button type="button" className="text-button danger-link" onClick={() => onClearDay?.(day.toISOString())}>
-                Clear day
+                Clear Day
               </button>
             )}
           </div>
@@ -64,17 +66,19 @@ export default function MealCalendar({ mealPlan, onRemoveMeal, onClearDay }) {
               />
               <div>
                 <span className="meal-type">{meal.mealType}</span>
-                <strong>{meal.recipe.title}</strong>
+                <strong>
+                  <Link to={`/recipes/${meal.recipe.spoonacularId}`}>{meal.recipe.title}</Link>
+                </strong>
                 <small>
                   {meal.recipe.readyInMinutes || 30} min - {meal.recipe.nutrition?.calories || "N/A"} kcal
                 </small>
                 <button type="button" className="text-button danger-link" onClick={() => onRemoveMeal?.(meal)}>
-                  Remove dish
+                  Remove Dish
                 </button>
               </div>
             </div>
           ))}
-          {meals.length === 0 && <p className="empty-day">No dish planned</p>}
+          {meals.length === 0 && <p className="empty-day">No Dish Planned</p>}
         </article>
         );
       })}

@@ -334,6 +334,18 @@ npm run dev --workspace backend
 http://localhost:5000/api/health
 ```
 
+Expected response:
+
+```json
+{
+  "status": "ok",
+  "service": "SmartMeal API",
+  "database": "connected"
+}
+```
+
+If `database` is `disconnected`, the backend is online but MongoDB is not reachable.
+
 4. Run the frontend:
 
 ```bash
@@ -374,6 +386,20 @@ Value: mongodb+srv://your_db_user:your_password@your-cluster-host.mongodb.net/sm
 Do not paste `MONGODB_URI=` into the Value box. The Value must start directly with `mongodb+srv://`.
 
 The backend is pinned to Node 22 LTS for Render using `backend/.node-version` and `backend/package.json`.
+
+If Render deploys successfully but `/api/health` shows:
+
+```json
+"database": "disconnected"
+```
+
+check MongoDB Atlas `Network Access`. Adding only your laptop IP is not enough for Render. Render connects from its own server IP, so allow:
+
+```text
+0.0.0.0/0
+```
+
+for the FYP demo, then redeploy the backend.
 
 ## Simple Explanation For Viva
 

@@ -72,12 +72,13 @@ a {
 
 .app-shell {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 300px 1fr;
   min-height: 100vh;
 }
 
 .sidebar {
-  background: #ffffff;
+  background:
+    linear-gradient(180deg, #ffffff 0 34%, #e9f4ee 34% 68%, #fff1eb 68% 100%);
   border-right: 1px solid var(--line);
   display: flex;
   flex-direction: column;
@@ -90,7 +91,7 @@ a {
 }
 
 .sidebar h1 {
-  font-size: 2.4rem;
+  font-size: 2.8rem;
   line-height: 1;
   margin: 0;
 }
@@ -112,6 +113,8 @@ a {
 .main-nav a {
   border-radius: 8px;
   color: var(--ink);
+  font-size: 1.08rem;
+  font-weight: 800;
   padding: 0.8rem 0.9rem;
   text-decoration: none;
   transition: background 160ms ease, color 160ms ease;
@@ -126,6 +129,7 @@ a {
 .account-panel {
   border-top: 1px solid var(--line);
   display: grid;
+  font-size: 1.02rem;
   gap: 0.6rem;
   padding-top: 1rem;
 }
@@ -165,7 +169,8 @@ a {
 
 .page-surface {
   background:
-    linear-gradient(135deg, rgba(47, 125, 87, 0.09) 0 25%, transparent 25% 50%, rgba(217, 93, 57, 0.06) 50% 75%, transparent 75%) 0 0 / 42px 42px,
+    radial-gradient(circle at 1px 1px, rgba(47, 125, 87, 0.16) 1px, transparent 0) 0 0 / 28px 28px,
+    linear-gradient(90deg, rgba(47, 125, 87, 0.08), transparent 24%, rgba(217, 93, 57, 0.07) 68%, transparent),
     linear-gradient(180deg, #fbfcfa 0%, #f0f6f2 100%);
   padding: 2rem;
 }
@@ -218,9 +223,9 @@ a {
 .calendar-grid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(7, minmax(150px, 1fr));
+  grid-template-columns: repeat(7, minmax(185px, 1fr));
   margin: 0 auto;
-  max-width: 1320px;
+  max-width: none;
   overflow-x: auto;
   padding-bottom: 0.5rem;
 }
@@ -229,7 +234,7 @@ a {
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 8px;
-  min-width: 150px;
+  min-width: 185px;
   overflow: hidden;
 }
 
@@ -242,6 +247,10 @@ a {
   font-weight: 800;
   justify-content: space-between;
   padding: 0.85rem;
+}
+
+.date-label {
+  white-space: nowrap;
 }
 
 .meal-row {
@@ -278,6 +287,15 @@ a {
   font-size: 0.92rem;
   line-height: 1.25;
   margin: 0.2rem 0;
+}
+
+.meal-row strong a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.meal-row strong a:hover {
+  color: var(--accent-strong);
 }
 
 .meal-row small,

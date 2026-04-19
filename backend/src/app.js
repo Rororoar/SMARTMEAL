@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
+const mongoose = require("mongoose");
 const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
 
@@ -44,9 +45,12 @@ app.use(
 );
 
 app.get("/api/health", (req, res) => {
+  const states = ["disconnected", "connected", "connecting", "disconnecting"];
+
   res.json({
     status: "ok",
     service: "SmartMeal API",
+    database: states[mongoose.connection.readyState] || "unknown",
     timestamp: new Date().toISOString()
   });
 });
@@ -61,4 +65,3 @@ app.use(notFound);
 app.use(errorHandler);
 
 module.exports = app;
-
