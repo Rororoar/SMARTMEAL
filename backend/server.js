@@ -1,8 +1,9 @@
 const dotenv = require("dotenv");
+const path = require("path");
 const app = require("./src/app");
 const connectDB = require("./src/config/db");
 
-dotenv.config();
+dotenv.config({ path: path.join(__dirname, ".env") });
 
 const port = process.env.PORT || 5000;
 

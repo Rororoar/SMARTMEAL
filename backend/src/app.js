@@ -14,8 +14,12 @@ const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
 const app = express();
 
+function normalizeOrigin(origin) {
+  return origin ? origin.replace(/\/$/, "") : origin;
+}
+
 const allowedOrigins = [
-  process.env.CLIENT_URL,
+  normalizeOrigin(process.env.CLIENT_URL),
   "http://localhost:5173",
   "http://127.0.0.1:5173"
 ].filter(Boolean);
@@ -24,7 +28,7 @@ app.use(helmet());
 app.use(
   cors({
     origin(origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
+      if (!origin || allowedOrigins.includes(normalizeOrigin(origin))) {
         callback(null, true);
         return;
       }
