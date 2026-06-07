@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { formatDateKey } from "../utils/week";
 
 const headerFormatter = new Intl.DateTimeFormat("en", {
   weekday: "long"
@@ -23,7 +24,7 @@ function buildWeekDays(mealPlan) {
 
 function groupMeals(meals) {
   return meals.reduce((acc, meal) => {
-    const dayKey = startOfDay(meal.date).toISOString();
+    const dayKey = formatDateKey(startOfDay(meal.date));
     const typeKey = String(meal.mealType || "dinner").toLowerCase();
 
     acc[dayKey] = acc[dayKey] || {};
@@ -79,7 +80,7 @@ export default function MealCalendar({ mealPlan, onRemoveMeal, onClearDay }) {
     <section className="calendar-board" aria-label="Weekly meal calendar">
       <div className="calendar-board-headings">
         {days.map((day) => (
-          <div className="calendar-day-label" key={day.toISOString()}>
+          <div className="calendar-day-label" key={formatDateKey(day)}>
             {headerFormatter.format(day)}
           </div>
         ))}
@@ -87,7 +88,7 @@ export default function MealCalendar({ mealPlan, onRemoveMeal, onClearDay }) {
 
       <div className="calendar-board-grid">
         {days.map((day) => {
-          const dayKey = day.toISOString();
+          const dayKey = formatDateKey(day);
           const dayMeals = groupedMeals[dayKey] || {};
           const dayHasMeals = Object.values(dayMeals).some((items) => items.length);
 

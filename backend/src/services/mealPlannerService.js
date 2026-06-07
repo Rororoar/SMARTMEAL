@@ -5,13 +5,29 @@ const { buildGroceryList } = require("./groceryService");
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 function startOfDay(date) {
-  const result = new Date(date);
+  const result = parseCalendarDate(date);
   result.setHours(0, 0, 0, 0);
   return result;
 }
 
 function addDays(date, days) {
   return new Date(startOfDay(date).getTime() + days * DAY_MS);
+}
+
+function parseCalendarDate(value) {
+  if (value instanceof Date) {
+    return new Date(value);
+  }
+
+  if (typeof value === "string") {
+    const match = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (match) {
+      const [, year, month, day] = match;
+      return new Date(Number(year), Number(month) - 1, Number(day));
+    }
+  }
+
+  return new Date(value);
 }
 
 function parseWeekStart(value) {
@@ -158,6 +174,19 @@ function filterRecipesForProfile(recipes, profile) {
   return recipes.filter((recipe) => !recipeContainsBlockedTerm(recipe, blockedTerms));
 }
 
+function uniqueRecipes(recipes) {
+  const seen = new Set();
+
+  return recipes.filter((recipe) => {
+    const key = Number(recipe?.spoonacularId || recipe?.id || 0);
+    if (!key || seen.has(key)) {
+      return false;
+    }
+    seen.add(key);
+    return true;
+  });
+}
+
 async function searchSafeRecipes(profile, slots) {
   const recipeCount = Math.max(slots * 2, 18);
   const attempts = [
@@ -166,6 +195,7 @@ async function searchSafeRecipes(profile, slots) {
     async () => fallbackRecipes.map(normalizeRecipe)
   ];
 
+  const collectedRecipes = [];
   let lastError;
 
   for (const attempt of attempts) {
@@ -174,11 +204,20 @@ async function searchSafeRecipes(profile, slots) {
       const safeRecipes = filterRecipesForProfile(recipes, profile);
 
       if (safeRecipes.length) {
-        return safeRecipes;
+        collectedRecipes.push(...safeRecipes);
+        if (uniqueRecipes(collectedRecipes).length >= Math.min(slots, 7)) {
+          break;
+        }
       }
     } catch (error) {
       lastError = error;
     }
+  }
+
+  const uniqueSafeRecipes = uniqueRecipes(collectedRecipes);
+
+  if (uniqueSafeRecipes.length) {
+    return uniqueSafeRecipes;
   }
 
   if (lastError) {
@@ -197,6 +236,14 @@ function createPrepTasks(meals) {
   }));
 }
 
+function recipeIndexForSlot(dayIndex, slotIndex, recipeCount) {
+  if (recipeCount <= 1) {
+    return 0;
+  }
+
+  return (dayIndex + slotIndex * 2) % recipeCount;
+}
+
 async function generateWeeklyPlan(profile, weekStartValue) {
   const weekStart = parseWeekStart(weekStartValue);
   const weekEnd = addDays(weekStart, 6);
@@ -208,16 +255,16 @@ async function generateWeeklyPlan(profile, weekStartValue) {
   const safeRecipes = await searchSafeRecipes(profile, slots);
 
   const meals = [];
-  let recipeIndex = 0;
 
   for (let day = 0; day < 7; day += 1) {
-    mealTypes.forEach((mealType) => {
+    mealTypes.forEach((mealType, slotIndex) => {
+      const recipe = safeRecipes[recipeIndexForSlot(day, slotIndex, safeRecipes.length)];
+
       meals.push({
         date: addDays(weekStart, day),
         mealType,
-        recipe: safeRecipes[recipeIndex % safeRecipes.length]
+        recipe
       });
-      recipeIndex += 1;
     });
   }
 
@@ -232,5 +279,6 @@ async function generateWeeklyPlan(profile, weekStartValue) {
 
 module.exports = {
   generateWeeklyPlan,
+  parseCalendarDate,
   parseWeekStart
 };

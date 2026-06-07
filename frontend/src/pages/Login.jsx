@@ -66,7 +66,7 @@ export default function Login() {
             New to SmartMeal? <Link to="/register">Create an account</Link>
           </p>
           <p>
-            <Link to="/reset-password">Forgot password?</Link>
+            <Link to={`/reset-password${form.email ? `?email=${encodeURIComponent(form.email)}` : ""}`}>Forgot password?</Link>
           </p>
         </section>
       </main>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { authApi } from "../api/client";
 
@@ -7,28 +7,30 @@ const FOOTER_TAGLINE = `Eat well, live well, reduce waste ${"\u{1F331}"}`;
 
 export default function ResetPassword() {
   const [searchParams] = useSearchParams();
+  const initialEmail = searchParams.get("email") || "";
   const navigate = useNavigate();
   const [form, setForm] = useState({
-    email: searchParams.get("email") || "",
+    email: initialEmail,
     otp: searchParams.get("otp") || "",
     newPassword: ""
   });
   const [status, setStatus] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const otpRequestedRef = useRef(false);
 
-  async function requestOtp() {
+  async function requestOtp(nextEmail = form.email) {
     setError("");
     setStatus("");
 
-    if (!form.email) {
+    if (!nextEmail) {
       setError("Enter your email first.");
       return;
     }
 
     setLoading(true);
     try {
-      const data = await authApi.requestPasswordOtp({ email: form.email });
+      const data = await authApi.requestPasswordOtp({ email: nextEmail });
       setStatus(data.devOtp ? `${data.message} Development OTP: ${data.devOtp}` : data.message);
     } catch (err) {
       setError(err.message);
@@ -36,6 +38,12 @@ export default function ResetPassword() {
       setLoading(false);
     }
   }
+
+  useEffect(() => {
+    if (!initialEmail || otpRequestedRef.current) return;
+    otpRequestedRef.current = true;
+    requestOtp(initialEmail);
+  }, [initialEmail]);
 
   async function handleSubmit(event) {
     event.preventDefault();

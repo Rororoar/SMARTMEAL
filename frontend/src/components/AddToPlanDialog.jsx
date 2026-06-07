@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { mealPlanApi } from "../api/client";
-import { startOfWeek, weekDateOptions } from "../utils/week";
+import { formatDateKey, startOfWeek, weekDateOptions } from "../utils/week";
 
 export default function AddToPlanDialog({ recipe, open, onClose, onAdded, onError }) {
   const dates = useMemo(() => weekDateOptions(), []);
@@ -15,7 +15,7 @@ export default function AddToPlanDialog({ recipe, open, onClose, onAdded, onErro
     setLoading(true);
     try {
       const selectedDate = new Date(date);
-      const weekStart = startOfWeek(selectedDate).toISOString();
+      const weekStart = formatDateKey(startOfWeek(selectedDate));
       const data = await mealPlanApi.addRecipeToCurrent(recipe, {
         date,
         weekStart,

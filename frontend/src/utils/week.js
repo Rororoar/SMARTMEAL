@@ -1,5 +1,13 @@
 const DAY_MS = 24 * 60 * 60 * 1000;
 
+export function formatDateKey(date) {
+  const value = new Date(date);
+  const year = value.getFullYear();
+  const month = String(value.getMonth() + 1).padStart(2, "0");
+  const day = String(value.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
 export function startOfWeek(date = new Date()) {
   const result = new Date(date);
   result.setHours(0, 0, 0, 0);
@@ -14,7 +22,7 @@ export function weekDateOptions(date = new Date()) {
   return Array.from({ length: 7 }, (_, index) => {
     const item = new Date(start.getTime() + index * DAY_MS);
     return {
-      value: item.toISOString(),
+      value: formatDateKey(item),
       label: item.toLocaleDateString("en", {
         weekday: "long",
         month: "short",
@@ -23,4 +31,3 @@ export function weekDateOptions(date = new Date()) {
     };
   });
 }
-

@@ -2,7 +2,7 @@ const MealPlan = require("../models/MealPlan");
 const Profile = require("../models/Profile");
 const asyncHandler = require("../utils/asyncHandler");
 const { buildGroceryList } = require("../services/groceryService");
-const { generateWeeklyPlan, parseWeekStart } = require("../services/mealPlannerService");
+const { generateWeeklyPlan, parseCalendarDate, parseWeekStart } = require("../services/mealPlannerService");
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -82,7 +82,7 @@ const addRecipeToCurrent = asyncHandler(async (req, res) => {
 
   const weekStart = parseWeekStart(weekStartValue);
   const weekEnd = addDays(weekStart, 6);
-  const mealDate = date ? new Date(date) : new Date();
+  const mealDate = date ? parseCalendarDate(date) : new Date();
 
   const mealPlan = await MealPlan.findOneAndUpdate(
     { user: req.user._id, weekStart },
@@ -212,8 +212,10 @@ const clearDay = asyncHandler(async (req, res) => {
     throw new Error("Meal plan not found");
   }
 
-  mealPlan.meals = mealPlan.meals.filter((meal) => !isSameDay(meal.date, date));
-  mealPlan.prepTasks = mealPlan.prepTasks.filter((task) => !isSameDay(task.date, date));
+  const calendarDate = parseCalendarDate(date);
+
+  mealPlan.meals = mealPlan.meals.filter((meal) => !isSameDay(meal.date, calendarDate));
+  mealPlan.prepTasks = mealPlan.prepTasks.filter((task) => !isSameDay(task.date, calendarDate));
 
   syncGroceryList(mealPlan);
   await mealPlan.save();
