@@ -1,0 +1,307 @@
+{"kind":"deck","id":"smartmeal-symposium","slideCount":10,"slideSize":{"width":1280,"height":720}}
+{"kind":"slide","slide":1,"id":"t15vgz"}
+{"kind":"slide","slide":2,"id":"0sb1oh"}
+{"kind":"slide","slide":3,"id":"lulz5a"}
+{"kind":"slide","slide":4,"id":"itduzq"}
+{"kind":"slide","slide":5,"id":"5kndda"}
+{"kind":"slide","slide":6,"id":"2ay6zb"}
+{"kind":"slide","slide":7,"id":"bm41f4"}
+{"kind":"slide","slide":8,"id":"io2hm8"}
+{"kind":"slide","slide":9,"id":"tkriu3"}
+{"kind":"slide","slide":10,"id":"zg565u"}
+{"kind":"image","slide":1,"id":"2","role":"fallback art plate","path":"fallback-data-url","bbox":[0,0,1280,720]}
+{"kind":"shape","slide":1,"id":"3","role":"cover contrast overlay","shapeType":"rect","bbox":[0,0,1280,720]}
+{"kind":"shape","slide":1,"id":"4","role":"cover accent rule","shapeType":"rect","bbox":[64,86,7,455]}
+{"kind":"textbox","slide":1,"id":"5","role":"kicker","text":"FINAL YEAR PROJECT SYMPOSIUM","textPreview":"FINAL YEAR PROJECT SYMPOSIUM","textChars":28,"textLines":1,"bbox":[86,88,520,26]}
+{"kind":"textbox","slide":1,"id":"6","role":"cover title","text":"SmartMeal: Intelligent Meal Planning and Prep Assistant","textPreview":"SmartMeal: Intelligent Meal Planning and Prep Assistant","textChars":55,"textLines":1,"bbox":[82,130,785,184]}
+{"kind":"textbox","slide":1,"id":"7","role":"cover subtitle","text":"A full-stack web application that generates weekly meal plans from user preferences, supports meal preparation, and builds grocery lists automatically.","textPreview":"A full-stack web application that generates weekly meal plans from user preferences, supports meal preparation, and builds grocery lists automatically.","textChars":151,"textLines":1,"bbox":[86,326,610,86]}
+{"kind":"shape","slide":1,"id":"8","role":"cover moment panel","shapeType":"roundRect","bbox":[86,456,390,92]}
+{"kind":"textbox","slide":1,"id":"9","role":"cover moment","text":"Plan meals first, not only track them.","textPreview":"Plan meals first, not only track them.","textChars":38,"textLines":1,"bbox":[112,478,336,40]}
+{"kind":"image","slide":2,"id":"2","role":"fallback art plate","path":"fallback-data-url","bbox":[0,0,1280,720]}
+{"kind":"shape","slide":2,"id":"3","role":"content contrast overlay","shapeType":"rect","bbox":[0,0,1280,720]}
+{"kind":"textbox","slide":2,"id":"4","role":"header","text":"01 PROBLEM","textPreview":"01 PROBLEM","textChars":10,"textLines":1,"bbox":[64,34,430,24]}
+{"kind":"textbox","slide":2,"id":"5","role":"header","text":"02 / 10","textPreview":"02 / 10","textChars":7,"textLines":1,"bbox":[1114,34,104,24]}
+{"kind":"shape","slide":2,"id":"6","role":"header rule","shapeType":"rect","bbox":[64,64,1152,2]}
+{"kind":"shape","slide":2,"id":"7","role":"header marker","shapeType":"ellipse","bbox":[57,57,16,16]}
+{"kind":"textbox","slide":2,"id":"8","role":"title","text":"Why this project matters","textPreview":"Why this project matters","textChars":24,"textLines":1,"bbox":[64,86,760,142]}
+{"kind":"textbox","slide":2,"id":"9","role":"subtitle","text":"The project targets practical meal-planning problems that appear every week, not just occasional recipe discovery.","textPreview":"The project targets practical meal-planning problems that appear every week, not just occasional recipe discovery.","textChars":114,"textLines":1,"bbox":[66,234,720,70]}
+{"kind":"shape","slide":2,"id":"10","role":"card panel: Decision fatigue","shapeType":"roundRect","bbox":[84,388,355.3333333333333,220]}
+{"kind":"shape","slide":2,"id":"11","role":"card accent: Decision fatigue","shapeType":"rect","bbox":[84,388,8,220]}
+{"kind":"shape","slide":2,"id":"12","role":"icon badge","shapeType":"ellipse","bbox":[106,412,54,54]}
+{"kind":"shape","slide":2,"id":"13","role":"icon glyph","shapeType":"rect","bbox":[122,441,6,12]}
+{"kind":"shape","slide":2,"id":"14","role":"icon glyph","shapeType":"rect","bbox":[131,433,6,20]}
+{"kind":"shape","slide":2,"id":"15","role":"icon glyph","shapeType":"rect","bbox":[140,426,6,27]}
+{"kind":"textbox","slide":2,"id":"16","role":"card label","text":"Decision fatigue","textPreview":"Decision fatigue","textChars":16,"textLines":1,"bbox":[172,410,247.33333333333331,28]}
+{"kind":"textbox","slide":2,"id":"17","role":"card body: Decision fatigue","text":"Users spend time every day deciding\nwhat to cook, which leads to rushed\nand repetitive choices.","textPreview":"Users spend time every day deciding | what to cook, which leads to rushed | and repetitive choices.","textChars":95,"textLines":3,"bbox":[108,474,307.3333333333333,112]}
+{"kind":"shape","slide":2,"id":"18","role":"card panel: Poor grocery planning","shapeType":"roundRect","bbox":[463.3333333333333,388,355.3333333333333,220]}
+{"kind":"shape","slide":2,"id":"19","role":"card accent: Poor grocery planning","shapeType":"rect","bbox":[463.3333333333333,388,8,220]}
+{"kind":"shape","slide":2,"id":"20","role":"icon badge","shapeType":"ellipse","bbox":[485.3333333333333,412,54,54]}
+{"kind":"shape","slide":2,"id":"21","role":"icon glyph","shapeType":"ellipse","bbox":[498.3333333333333,430,10,10]}
+{"kind":"shape","slide":2,"id":"22","role":"icon glyph","shapeType":"ellipse","bbox":[516.3333333333333,439,10,10]}
+{"kind":"shape","slide":2,"id":"23","role":"icon glyph","shapeType":"rect","bbox":[507.3333333333333,437,19,3]}
+{"kind":"textbox","slide":2,"id":"24","role":"card label","text":"Poor grocery planning","textPreview":"Poor grocery planning","textChars":21,"textLines":1,"bbox":[551.3333333333333,410,247.33333333333331,28]}
+{"kind":"textbox","slide":2,"id":"25","role":"card body: Poor grocery planning","text":"Without a weekly plan, grocery\nshopping becomes inefficient and\ningredients are bought without a\nclear purpose.","textPreview":"Without a weekly plan, grocery | shopping becomes inefficient and | ingredients are bought without a | clear purpose.","textChars":111,"textLines":4,"bbox":[487.3333333333333,474,307.3333333333333,112]}
+{"kind":"shape","slide":2,"id":"26","role":"card panel: Food waste and prep issues","shapeType":"roundRect","bbox":[842.6666666666666,388,355.3333333333333,220]}
+{"kind":"shape","slide":2,"id":"27","role":"card accent: Food waste and prep issues","shapeType":"rect","bbox":[842.6666666666666,388,8,220]}
+{"kind":"shape","slide":2,"id":"28","role":"icon badge","shapeType":"ellipse","bbox":[864.6666666666666,412,54,54]}
+{"kind":"shape","slide":2,"id":"29","role":"icon glyph","shapeType":"roundRect","bbox":[877.6666666666666,427,26,13]}
+{"kind":"shape","slide":2,"id":"30","role":"icon glyph","shapeType":"roundRect","bbox":[882.6666666666666,436,26,13]}
+{"kind":"shape","slide":2,"id":"31","role":"icon glyph","shapeType":"roundRect","bbox":[887.6666666666666,445,20,10]}
+{"kind":"textbox","slide":2,"id":"32","role":"card label","text":"Food waste and prep issues","textPreview":"Food waste and prep issues","textChars":26,"textLines":1,"bbox":[930.6666666666666,410,247.33333333333331,28]}
+{"kind":"textbox","slide":2,"id":"33","role":"card body: Food waste and prep issues","text":"Weak planning makes ingredient\nreuse and early preparation harder,\nwhich increases waste at home.","textPreview":"Weak planning makes ingredient | reuse and early preparation harder, | which increases waste at home.","textChars":97,"textLines":3,"bbox":[866.6666666666666,474,307.3333333333333,112]}
+{"kind":"image","slide":3,"id":"2","role":"fallback art plate","path":"fallback-data-url","bbox":[0,0,1280,720]}
+{"kind":"shape","slide":3,"id":"3","role":"content contrast overlay","shapeType":"rect","bbox":[0,0,1280,720]}
+{"kind":"textbox","slide":3,"id":"4","role":"header","text":"02 OBJECTIVES","textPreview":"02 OBJECTIVES","textChars":13,"textLines":1,"bbox":[64,34,430,24]}
+{"kind":"textbox","slide":3,"id":"5","role":"header","text":"03 / 10","textPreview":"03 / 10","textChars":7,"textLines":1,"bbox":[1114,34,104,24]}
+{"kind":"shape","slide":3,"id":"6","role":"header rule","shapeType":"rect","bbox":[64,64,1152,2]}
+{"kind":"shape","slide":3,"id":"7","role":"header marker","shapeType":"ellipse","bbox":[57,57,16,16]}
+{"kind":"textbox","slide":3,"id":"8","role":"title","text":"Project objectives","textPreview":"Project objectives","textChars":18,"textLines":1,"bbox":[64,86,760,142]}
+{"kind":"textbox","slide":3,"id":"9","role":"subtitle","text":"The scope stays focused on three deliverables that are visible in the current implementation.","textPreview":"The scope stays focused on three deliverables that are visible in the current implementation.","textChars":93,"textLines":1,"bbox":[66,234,720,70]}
+{"kind":"shape","slide":3,"id":"10","role":"card panel: Personalized planning","shapeType":"roundRect","bbox":[84,388,355.3333333333333,220]}
+{"kind":"shape","slide":3,"id":"11","role":"card accent: Personalized planning","shapeType":"rect","bbox":[84,388,8,220]}
+{"kind":"shape","slide":3,"id":"12","role":"icon badge","shapeType":"ellipse","bbox":[106,412,54,54]}
+{"kind":"shape","slide":3,"id":"13","role":"icon glyph","shapeType":"rect","bbox":[122,441,6,12]}
+{"kind":"shape","slide":3,"id":"14","role":"icon glyph","shapeType":"rect","bbox":[131,433,6,20]}
+{"kind":"shape","slide":3,"id":"15","role":"icon glyph","shapeType":"rect","bbox":[140,426,6,27]}
+{"kind":"textbox","slide":3,"id":"16","role":"card label","text":"Personalized planning","textPreview":"Personalized planning","textChars":21,"textLines":1,"bbox":[172,410,247.33333333333331,28]}
+{"kind":"textbox","slide":3,"id":"17","role":"card body: Personalized planning","text":"Generate a weekly meal plan from\nuser diet, allergies, preferences,\nhealth goals, and cooking-time\nlimits.","textPreview":"Generate a weekly meal plan from | user diet, allergies, preferences, | health goals, and cooking-time | limits.","textChars":106,"textLines":4,"bbox":[108,474,307.3333333333333,112]}
+{"kind":"shape","slide":3,"id":"18","role":"card panel: Grocery automation","shapeType":"roundRect","bbox":[463.3333333333333,388,355.3333333333333,220]}
+{"kind":"shape","slide":3,"id":"19","role":"card accent: Grocery automation","shapeType":"rect","bbox":[463.3333333333333,388,8,220]}
+{"kind":"shape","slide":3,"id":"20","role":"icon badge","shapeType":"ellipse","bbox":[485.3333333333333,412,54,54]}
+{"kind":"shape","slide":3,"id":"21","role":"icon glyph","shapeType":"ellipse","bbox":[498.3333333333333,430,10,10]}
+{"kind":"shape","slide":3,"id":"22","role":"icon glyph","shapeType":"ellipse","bbox":[516.3333333333333,439,10,10]}
+{"kind":"shape","slide":3,"id":"23","role":"icon glyph","shapeType":"rect","bbox":[507.3333333333333,437,19,3]}
+{"kind":"textbox","slide":3,"id":"24","role":"card label","text":"Grocery automation","textPreview":"Grocery automation","textChars":18,"textLines":1,"bbox":[551.3333333333333,410,247.33333333333331,28]}
+{"kind":"textbox","slide":3,"id":"25","role":"card body: Grocery automation","text":"Create one combined grocery list by\ngrouping ingredients from the meals\nselected for the week.","textPreview":"Create one combined grocery list by | grouping ingredients from the meals | selected for the week.","textChars":94,"textLines":3,"bbox":[487.3333333333333,474,307.3333333333333,112]}
+{"kind":"shape","slide":3,"id":"26","role":"card panel: Prep and reuse","shapeType":"roundRect","bbox":[842.6666666666666,388,355.3333333333333,220]}
+{"kind":"shape","slide":3,"id":"27","role":"card accent: Prep and reuse","shapeType":"rect","bbox":[842.6666666666666,388,8,220]}
+{"kind":"shape","slide":3,"id":"28","role":"icon badge","shapeType":"ellipse","bbox":[864.6666666666666,412,54,54]}
+{"kind":"shape","slide":3,"id":"29","role":"icon glyph","shapeType":"roundRect","bbox":[877.6666666666666,427,26,13]}
+{"kind":"shape","slide":3,"id":"30","role":"icon glyph","shapeType":"roundRect","bbox":[882.6666666666666,436,26,13]}
+{"kind":"shape","slide":3,"id":"31","role":"icon glyph","shapeType":"roundRect","bbox":[887.6666666666666,445,20,10]}
+{"kind":"textbox","slide":3,"id":"32","role":"card label","text":"Prep and reuse","textPreview":"Prep and reuse","textChars":14,"textLines":1,"bbox":[930.6666666666666,410,247.33333333333331,28]}
+{"kind":"textbox","slide":3,"id":"33","role":"card body: Prep and reuse","text":"Support meal preparation through\nprep tasks, saved recipes, and\nhistory so the plan stays\npractical.","textPreview":"Support meal preparation through | prep tasks, saved recipes, and | history so the plan stays | practical.","textChars":100,"textLines":4,"bbox":[866.6666666666666,474,307.3333333333333,112]}
+{"kind":"image","slide":4,"id":"2","role":"fallback art plate","path":"fallback-data-url","bbox":[0,0,1280,720]}
+{"kind":"shape","slide":4,"id":"3","role":"content contrast overlay","shapeType":"rect","bbox":[0,0,1280,720]}
+{"kind":"textbox","slide":4,"id":"4","role":"header","text":"03 ARCHITECTURE","textPreview":"03 ARCHITECTURE","textChars":15,"textLines":1,"bbox":[64,34,430,24]}
+{"kind":"textbox","slide":4,"id":"5","role":"header","text":"04 / 10","textPreview":"04 / 10","textChars":7,"textLines":1,"bbox":[1114,34,104,24]}
+{"kind":"shape","slide":4,"id":"6","role":"header rule","shapeType":"rect","bbox":[64,64,1152,2]}
+{"kind":"shape","slide":4,"id":"7","role":"header marker","shapeType":"ellipse","bbox":[57,57,16,16]}
+{"kind":"textbox","slide":4,"id":"8","role":"title","text":"System architecture","textPreview":"System architecture","textChars":19,"textLines":1,"bbox":[64,86,760,142]}
+{"kind":"textbox","slide":4,"id":"9","role":"subtitle","text":"SmartMeal is split into a React frontend, an Express backend, MongoDB storage, and the Spoonacular recipe API.","textPreview":"SmartMeal is split into a React frontend, an Express backend, MongoDB storage, and the Spoonacular recipe API.","textChars":110,"textLines":1,"bbox":[66,234,720,70]}
+{"kind":"shape","slide":4,"id":"10","role":"card panel: Frontend","shapeType":"roundRect","bbox":[84,388,355.3333333333333,220]}
+{"kind":"shape","slide":4,"id":"11","role":"card accent: Frontend","shapeType":"rect","bbox":[84,388,8,220]}
+{"kind":"shape","slide":4,"id":"12","role":"icon badge","shapeType":"ellipse","bbox":[106,412,54,54]}
+{"kind":"shape","slide":4,"id":"13","role":"icon glyph","shapeType":"rect","bbox":[122,441,6,12]}
+{"kind":"shape","slide":4,"id":"14","role":"icon glyph","shapeType":"rect","bbox":[131,433,6,20]}
+{"kind":"shape","slide":4,"id":"15","role":"icon glyph","shapeType":"rect","bbox":[140,426,6,27]}
+{"kind":"textbox","slide":4,"id":"16","role":"card label","text":"Frontend","textPreview":"Frontend","textChars":8,"textLines":1,"bbox":[172,410,247.33333333333331,28]}
+{"kind":"textbox","slide":4,"id":"17","role":"card body: Frontend","text":"The React application handles\nlogin, profile setup, dashboard\nplanning, recipe browsing, grocery\ntracking, meal prep, and history.","textPreview":"The React application handles | login, profile setup, dashboard | planning, recipe browsing, grocery | tracking, meal prep, and history.","textChars":130,"textLines":4,"bbox":[108,474,307.3333333333333,112]}
+{"kind":"shape","slide":4,"id":"18","role":"card panel: Backend","shapeType":"roundRect","bbox":[463.3333333333333,388,355.3333333333333,220]}
+{"kind":"shape","slide":4,"id":"19","role":"card accent: Backend","shapeType":"rect","bbox":[463.3333333333333,388,8,220]}
+{"kind":"shape","slide":4,"id":"20","role":"icon badge","shapeType":"ellipse","bbox":[485.3333333333333,412,54,54]}
+{"kind":"shape","slide":4,"id":"21","role":"icon glyph","shapeType":"ellipse","bbox":[498.3333333333333,430,10,10]}
+{"kind":"shape","slide":4,"id":"22","role":"icon glyph","shapeType":"ellipse","bbox":[516.3333333333333,439,10,10]}
+{"kind":"shape","slide":4,"id":"23","role":"icon glyph","shapeType":"rect","bbox":[507.3333333333333,437,19,3]}
+{"kind":"textbox","slide":4,"id":"24","role":"card label","text":"Backend","textPreview":"Backend","textChars":7,"textLines":1,"bbox":[551.3333333333333,410,247.33333333333331,28]}
+{"kind":"textbox","slide":4,"id":"25","role":"card body: Backend","text":"The Express API manages\nauthentication, profiles, recipe\nrequests, weekly plan generation,\ngrocery aggregation, and saved\ndata.","textPreview":"The Express API manages | authentication, profiles, recipe | requests, weekly plan generation, | grocery aggregation, and saved | data.","textChars":127,"textLines":5,"bbox":[487.3333333333333,474,307.3333333333333,112]}
+{"kind":"shape","slide":4,"id":"26","role":"card panel: Data and recipe source","shapeType":"roundRect","bbox":[842.6666666666666,388,355.3333333333333,220]}
+{"kind":"shape","slide":4,"id":"27","role":"card accent: Data and recipe source","shapeType":"rect","bbox":[842.6666666666666,388,8,220]}
+{"kind":"shape","slide":4,"id":"28","role":"icon badge","shapeType":"ellipse","bbox":[864.6666666666666,412,54,54]}
+{"kind":"shape","slide":4,"id":"29","role":"icon glyph","shapeType":"roundRect","bbox":[877.6666666666666,427,26,13]}
+{"kind":"shape","slide":4,"id":"30","role":"icon glyph","shapeType":"roundRect","bbox":[882.6666666666666,436,26,13]}
+{"kind":"shape","slide":4,"id":"31","role":"icon glyph","shapeType":"roundRect","bbox":[887.6666666666666,445,20,10]}
+{"kind":"textbox","slide":4,"id":"32","role":"card label","text":"Data and recipe source","textPreview":"Data and recipe source","textChars":22,"textLines":1,"bbox":[930.6666666666666,410,247.33333333333331,28]}
+{"kind":"textbox","slide":4,"id":"33","role":"card body: Data and recipe source","text":"MongoDB stores users, profiles,\nplans, favourites, and cached\nrecipes, while Spoonacular supplies\nrecipe results.","textPreview":"MongoDB stores users, profiles, | plans, favourites, and cached | recipes, while Spoonacular supplies | recipe results.","textChars":113,"textLines":4,"bbox":[866.6666666666666,474,307.3333333333333,112]}
+{"kind":"image","slide":5,"id":"2","role":"fallback art plate","path":"fallback-data-url","bbox":[0,0,1280,720]}
+{"kind":"shape","slide":5,"id":"3","role":"content contrast overlay","shapeType":"rect","bbox":[0,0,1280,720]}
+{"kind":"textbox","slide":5,"id":"4","role":"header","text":"04 WORKFLOW","textPreview":"04 WORKFLOW","textChars":11,"textLines":1,"bbox":[64,34,430,24]}
+{"kind":"textbox","slide":5,"id":"5","role":"header","text":"05 / 10","textPreview":"05 / 10","textChars":7,"textLines":1,"bbox":[1114,34,104,24]}
+{"kind":"shape","slide":5,"id":"6","role":"header rule","shapeType":"rect","bbox":[64,64,1152,2]}
+{"kind":"shape","slide":5,"id":"7","role":"header marker","shapeType":"ellipse","bbox":[57,57,16,16]}
+{"kind":"textbox","slide":5,"id":"8","role":"title","text":"Implementation workflow","textPreview":"Implementation workflow","textChars":23,"textLines":1,"bbox":[64,86,760,142]}
+{"kind":"textbox","slide":5,"id":"9","role":"subtitle","text":"The application converts profile inputs into weekly meals, grocery items, and prep tasks through a backend generation flow.","textPreview":"The application converts profile inputs into weekly meals, grocery items, and prep tasks through a backend generation flow.","textChars":123,"textLines":1,"bbox":[66,234,720,70]}
+{"kind":"shape","slide":5,"id":"10","role":"card panel: Read profile inputs","shapeType":"roundRect","bbox":[84,388,355.3333333333333,220]}
+{"kind":"shape","slide":5,"id":"11","role":"card accent: Read profile inputs","shapeType":"rect","bbox":[84,388,8,220]}
+{"kind":"shape","slide":5,"id":"12","role":"icon badge","shapeType":"ellipse","bbox":[106,412,54,54]}
+{"kind":"shape","slide":5,"id":"13","role":"icon glyph","shapeType":"rect","bbox":[122,441,6,12]}
+{"kind":"shape","slide":5,"id":"14","role":"icon glyph","shapeType":"rect","bbox":[131,433,6,20]}
+{"kind":"shape","slide":5,"id":"15","role":"icon glyph","shapeType":"rect","bbox":[140,426,6,27]}
+{"kind":"textbox","slide":5,"id":"16","role":"card label","text":"Read profile inputs","textPreview":"Read profile inputs","textChars":19,"textLines":1,"bbox":[172,410,247.33333333333331,28]}
+{"kind":"textbox","slide":5,"id":"17","role":"card body: Read profile inputs","text":"The system reads diet, allergies,\ndisliked ingredients, health goals,\ncooking time, and selected meal\ntypes.","textPreview":"The system reads diet, allergies, | disliked ingredients, health goals, | cooking time, and selected meal | types.","textChars":108,"textLines":4,"bbox":[108,474,307.3333333333333,112]}
+{"kind":"shape","slide":5,"id":"18","role":"card panel: Generate safe meal options","shapeType":"roundRect","bbox":[463.3333333333333,388,355.3333333333333,220]}
+{"kind":"shape","slide":5,"id":"19","role":"card accent: Generate safe meal options","shapeType":"rect","bbox":[463.3333333333333,388,8,220]}
+{"kind":"shape","slide":5,"id":"20","role":"icon badge","shapeType":"ellipse","bbox":[485.3333333333333,412,54,54]}
+{"kind":"shape","slide":5,"id":"21","role":"icon glyph","shapeType":"ellipse","bbox":[498.3333333333333,430,10,10]}
+{"kind":"shape","slide":5,"id":"22","role":"icon glyph","shapeType":"ellipse","bbox":[516.3333333333333,439,10,10]}
+{"kind":"shape","slide":5,"id":"23","role":"icon glyph","shapeType":"rect","bbox":[507.3333333333333,437,19,3]}
+{"kind":"textbox","slide":5,"id":"24","role":"card label","text":"Generate safe meal options","textPreview":"Generate safe meal options","textChars":26,"textLines":1,"bbox":[551.3333333333333,410,247.33333333333331,28]}
+{"kind":"textbox","slide":5,"id":"25","role":"card body: Generate safe meal options","text":"The backend searches recipes,\nremoves blocked ingredients,\napplies nutrition limits, and falls\nback when necessary.","textPreview":"The backend searches recipes, | removes blocked ingredients, | applies nutrition limits, and falls | back when necessary.","textChars":115,"textLines":4,"bbox":[487.3333333333333,474,307.3333333333333,112]}
+{"kind":"shape","slide":5,"id":"26","role":"card panel: Build plan outputs","shapeType":"roundRect","bbox":[842.6666666666666,388,355.3333333333333,220]}
+{"kind":"shape","slide":5,"id":"27","role":"card accent: Build plan outputs","shapeType":"rect","bbox":[842.6666666666666,388,8,220]}
+{"kind":"shape","slide":5,"id":"28","role":"icon badge","shapeType":"ellipse","bbox":[864.6666666666666,412,54,54]}
+{"kind":"shape","slide":5,"id":"29","role":"icon glyph","shapeType":"roundRect","bbox":[877.6666666666666,427,26,13]}
+{"kind":"shape","slide":5,"id":"30","role":"icon glyph","shapeType":"roundRect","bbox":[882.6666666666666,436,26,13]}
+{"kind":"shape","slide":5,"id":"31","role":"icon glyph","shapeType":"roundRect","bbox":[887.6666666666666,445,20,10]}
+{"kind":"textbox","slide":5,"id":"32","role":"card label","text":"Build plan outputs","textPreview":"Build plan outputs","textChars":18,"textLines":1,"bbox":[930.6666666666666,410,247.33333333333331,28]}
+{"kind":"textbox","slide":5,"id":"33","role":"card body: Build plan outputs","text":"The final weekly plan is stored\nwith linked meals, a combined\ngrocery list, and meal-prep tasks.","textPreview":"The final weekly plan is stored | with linked meals, a combined | grocery list, and meal-prep tasks.","textChars":96,"textLines":3,"bbox":[866.6666666666666,474,307.3333333333333,112]}
+{"kind":"image","slide":6,"id":"2","role":"fallback art plate","path":"fallback-data-url","bbox":[0,0,1280,720]}
+{"kind":"shape","slide":6,"id":"3","role":"content contrast overlay","shapeType":"rect","bbox":[0,0,1280,720]}
+{"kind":"textbox","slide":6,"id":"4","role":"header","text":"05 FEATURES","textPreview":"05 FEATURES","textChars":11,"textLines":1,"bbox":[64,34,430,24]}
+{"kind":"textbox","slide":6,"id":"5","role":"header","text":"06 / 10","textPreview":"06 / 10","textChars":7,"textLines":1,"bbox":[1114,34,104,24]}
+{"kind":"shape","slide":6,"id":"6","role":"header rule","shapeType":"rect","bbox":[64,64,1152,2]}
+{"kind":"shape","slide":6,"id":"7","role":"header marker","shapeType":"ellipse","bbox":[57,57,16,16]}
+{"kind":"textbox","slide":6,"id":"8","role":"title","text":"Current implemented features","textPreview":"Current implemented features","textChars":28,"textLines":1,"bbox":[64,86,760,142]}
+{"kind":"textbox","slide":6,"id":"9","role":"subtitle","text":"The current codebase already covers the main end-user workflow from account creation to weekly plan execution.","textPreview":"The current codebase already covers the main end-user workflow from account creation to weekly plan execution.","textChars":110,"textLines":1,"bbox":[66,234,720,70]}
+{"kind":"shape","slide":6,"id":"10","role":"card panel: User and profile management","shapeType":"roundRect","bbox":[84,388,355.3333333333333,220]}
+{"kind":"shape","slide":6,"id":"11","role":"card accent: User and profile management","shapeType":"rect","bbox":[84,388,8,220]}
+{"kind":"shape","slide":6,"id":"12","role":"icon badge","shapeType":"ellipse","bbox":[106,412,54,54]}
+{"kind":"shape","slide":6,"id":"13","role":"icon glyph","shapeType":"rect","bbox":[122,441,6,12]}
+{"kind":"shape","slide":6,"id":"14","role":"icon glyph","shapeType":"rect","bbox":[131,433,6,20]}
+{"kind":"shape","slide":6,"id":"15","role":"icon glyph","shapeType":"rect","bbox":[140,426,6,27]}
+{"kind":"textbox","slide":6,"id":"16","role":"card label","text":"User and profile management","textPreview":"User and profile management","textChars":27,"textLines":1,"bbox":[172,410,247.33333333333331,28]}
+{"kind":"textbox","slide":6,"id":"17","role":"card body: User and profile management","text":"Users can register, log in, reset\npasswords, and maintain a profile\nwith diet, allergies, goals, and\npreferred ingredients.","textPreview":"Users can register, log in, reset | passwords, and maintain a profile | with diet, allergies, goals, and | preferred ingredients.","textChars":123,"textLines":4,"bbox":[108,474,307.3333333333333,112]}
+{"kind":"shape","slide":6,"id":"18","role":"card panel: Planning and recipe flow","shapeType":"roundRect","bbox":[463.3333333333333,388,355.3333333333333,220]}
+{"kind":"shape","slide":6,"id":"19","role":"card accent: Planning and recipe flow","shapeType":"rect","bbox":[463.3333333333333,388,8,220]}
+{"kind":"shape","slide":6,"id":"20","role":"icon badge","shapeType":"ellipse","bbox":[485.3333333333333,412,54,54]}
+{"kind":"shape","slide":6,"id":"21","role":"icon glyph","shapeType":"ellipse","bbox":[498.3333333333333,430,10,10]}
+{"kind":"shape","slide":6,"id":"22","role":"icon glyph","shapeType":"ellipse","bbox":[516.3333333333333,439,10,10]}
+{"kind":"shape","slide":6,"id":"23","role":"icon glyph","shapeType":"rect","bbox":[507.3333333333333,437,19,3]}
+{"kind":"textbox","slide":6,"id":"24","role":"card label","text":"Planning and recipe flow","textPreview":"Planning and recipe flow","textChars":24,"textLines":1,"bbox":[551.3333333333333,410,247.33333333333331,28]}
+{"kind":"textbox","slide":6,"id":"25","role":"card body: Planning and recipe flow","text":"Users can generate a weekly plan,\nbrowse recipes, inspect recipe\ndetails, save favourites, and place\nmeals into plan slots.","textPreview":"Users can generate a weekly plan, | browse recipes, inspect recipe | details, save favourites, and place | meals into plan slots.","textChars":123,"textLines":4,"bbox":[487.3333333333333,474,307.3333333333333,112]}
+{"kind":"shape","slide":6,"id":"26","role":"card panel: Execution support","shapeType":"roundRect","bbox":[842.6666666666666,388,355.3333333333333,220]}
+{"kind":"shape","slide":6,"id":"27","role":"card accent: Execution support","shapeType":"rect","bbox":[842.6666666666666,388,8,220]}
+{"kind":"shape","slide":6,"id":"28","role":"icon badge","shapeType":"ellipse","bbox":[864.6666666666666,412,54,54]}
+{"kind":"shape","slide":6,"id":"29","role":"icon glyph","shapeType":"roundRect","bbox":[877.6666666666666,427,26,13]}
+{"kind":"shape","slide":6,"id":"30","role":"icon glyph","shapeType":"roundRect","bbox":[882.6666666666666,436,26,13]}
+{"kind":"shape","slide":6,"id":"31","role":"icon glyph","shapeType":"roundRect","bbox":[887.6666666666666,445,20,10]}
+{"kind":"textbox","slide":6,"id":"32","role":"card label","text":"Execution support","textPreview":"Execution support","textChars":17,"textLines":1,"bbox":[930.6666666666666,410,247.33333333333331,28]}
+{"kind":"textbox","slide":6,"id":"33","role":"card body: Execution support","text":"The system provides grocery\ntracking, meal-prep tasks, and\nhistory so the plan is easier to\nfollow.","textPreview":"The system provides grocery | tracking, meal-prep tasks, and | history so the plan is easier to | follow.","textChars":99,"textLines":4,"bbox":[866.6666666666666,474,307.3333333333333,112]}
+{"kind":"image","slide":7,"id":"2","role":"fallback art plate","path":"fallback-data-url","bbox":[0,0,1280,720]}
+{"kind":"shape","slide":7,"id":"3","role":"content contrast overlay","shapeType":"rect","bbox":[0,0,1280,720]}
+{"kind":"textbox","slide":7,"id":"4","role":"header","text":"06 TECHNICAL LOGIC","textPreview":"06 TECHNICAL LOGIC","textChars":18,"textLines":1,"bbox":[64,34,430,24]}
+{"kind":"textbox","slide":7,"id":"5","role":"header","text":"07 / 10","textPreview":"07 / 10","textChars":7,"textLines":1,"bbox":[1114,34,104,24]}
+{"kind":"shape","slide":7,"id":"6","role":"header rule","shapeType":"rect","bbox":[64,64,1152,2]}
+{"kind":"shape","slide":7,"id":"7","role":"header marker","shapeType":"ellipse","bbox":[57,57,16,16]}
+{"kind":"textbox","slide":7,"id":"8","role":"title","text":"Key technical decisions","textPreview":"Key technical decisions","textChars":23,"textLines":1,"bbox":[64,86,760,142]}
+{"kind":"textbox","slide":7,"id":"9","role":"subtitle","text":"The implementation uses a few simple but important backend decisions to keep the plan generation practical and safe.","textPreview":"The implementation uses a few simple but important backend decisions to keep the plan generation practical and safe.","textChars":116,"textLines":1,"bbox":[66,234,720,70]}
+{"kind":"shape","slide":7,"id":"10","role":"card panel: Profile-driven filtering","shapeType":"roundRect","bbox":[84,388,355.3333333333333,220]}
+{"kind":"shape","slide":7,"id":"11","role":"card accent: Profile-driven filtering","shapeType":"rect","bbox":[84,388,8,220]}
+{"kind":"shape","slide":7,"id":"12","role":"icon badge","shapeType":"ellipse","bbox":[106,412,54,54]}
+{"kind":"shape","slide":7,"id":"13","role":"icon glyph","shapeType":"rect","bbox":[122,441,6,12]}
+{"kind":"shape","slide":7,"id":"14","role":"icon glyph","shapeType":"rect","bbox":[131,433,6,20]}
+{"kind":"shape","slide":7,"id":"15","role":"icon glyph","shapeType":"rect","bbox":[140,426,6,27]}
+{"kind":"textbox","slide":7,"id":"16","role":"card label","text":"Profile-driven filtering","textPreview":"Profile-driven filtering","textChars":24,"textLines":1,"bbox":[172,410,247.33333333333331,28]}
+{"kind":"textbox","slide":7,"id":"17","role":"card body: Profile-driven filtering","text":"Blocked terms are expanded from\nallergies, dislikes, and dietary\nrules before recipes are accepted.","textPreview":"Blocked terms are expanded from | allergies, dislikes, and dietary | rules before recipes are accepted.","textChars":99,"textLines":3,"bbox":[108,474,307.3333333333333,112]}
+{"kind":"shape","slide":7,"id":"18","role":"card panel: Recipe caching","shapeType":"roundRect","bbox":[463.3333333333333,388,355.3333333333333,220]}
+{"kind":"shape","slide":7,"id":"19","role":"card accent: Recipe caching","shapeType":"rect","bbox":[463.3333333333333,388,8,220]}
+{"kind":"shape","slide":7,"id":"20","role":"icon badge","shapeType":"ellipse","bbox":[485.3333333333333,412,54,54]}
+{"kind":"shape","slide":7,"id":"21","role":"icon glyph","shapeType":"ellipse","bbox":[498.3333333333333,430,10,10]}
+{"kind":"shape","slide":7,"id":"22","role":"icon glyph","shapeType":"ellipse","bbox":[516.3333333333333,439,10,10]}
+{"kind":"shape","slide":7,"id":"23","role":"icon glyph","shapeType":"rect","bbox":[507.3333333333333,437,19,3]}
+{"kind":"textbox","slide":7,"id":"24","role":"card label","text":"Recipe caching","textPreview":"Recipe caching","textChars":14,"textLines":1,"bbox":[551.3333333333333,410,247.33333333333331,28]}
+{"kind":"textbox","slide":7,"id":"25","role":"card body: Recipe caching","text":"Recipe searches are cached in\nMongoDB with an expiry time to\nreduce repeated external API\nrequests.","textPreview":"Recipe searches are cached in | MongoDB with an expiry time to | reduce repeated external API | requests.","textChars":99,"textLines":4,"bbox":[487.3333333333333,474,307.3333333333333,112]}
+{"kind":"shape","slide":7,"id":"26","role":"card panel: Grocery aggregation","shapeType":"roundRect","bbox":[842.6666666666666,388,355.3333333333333,220]}
+{"kind":"shape","slide":7,"id":"27","role":"card accent: Grocery aggregation","shapeType":"rect","bbox":[842.6666666666666,388,8,220]}
+{"kind":"shape","slide":7,"id":"28","role":"icon badge","shapeType":"ellipse","bbox":[864.6666666666666,412,54,54]}
+{"kind":"shape","slide":7,"id":"29","role":"icon glyph","shapeType":"roundRect","bbox":[877.6666666666666,427,26,13]}
+{"kind":"shape","slide":7,"id":"30","role":"icon glyph","shapeType":"roundRect","bbox":[882.6666666666666,436,26,13]}
+{"kind":"shape","slide":7,"id":"31","role":"icon glyph","shapeType":"roundRect","bbox":[887.6666666666666,445,20,10]}
+{"kind":"textbox","slide":7,"id":"32","role":"card label","text":"Grocery aggregation","textPreview":"Grocery aggregation","textChars":19,"textLines":1,"bbox":[930.6666666666666,410,247.33333333333331,28]}
+{"kind":"textbox","slide":7,"id":"33","role":"card body: Grocery aggregation","text":"Ingredients from selected meals are\ngrouped by name and unit, then\ncombined into one grocery list.","textPreview":"Ingredients from selected meals are | grouped by name and unit, then | combined into one grocery list.","textChars":98,"textLines":3,"bbox":[866.6666666666666,474,307.3333333333333,112]}
+{"kind":"image","slide":8,"id":"2","role":"fallback art plate","path":"fallback-data-url","bbox":[0,0,1280,720]}
+{"kind":"shape","slide":8,"id":"3","role":"content contrast overlay","shapeType":"rect","bbox":[0,0,1280,720]}
+{"kind":"textbox","slide":8,"id":"4","role":"header","text":"07 TESTING","textPreview":"07 TESTING","textChars":10,"textLines":1,"bbox":[64,34,430,24]}
+{"kind":"textbox","slide":8,"id":"5","role":"header","text":"08 / 10","textPreview":"08 / 10","textChars":7,"textLines":1,"bbox":[1114,34,104,24]}
+{"kind":"shape","slide":8,"id":"6","role":"header rule","shapeType":"rect","bbox":[64,64,1152,2]}
+{"kind":"shape","slide":8,"id":"7","role":"header marker","shapeType":"ellipse","bbox":[57,57,16,16]}
+{"kind":"textbox","slide":8,"id":"8","role":"title","text":"Testing and validation","textPreview":"Testing and validation","textChars":22,"textLines":1,"bbox":[64,86,760,142]}
+{"kind":"textbox","slide":8,"id":"9","role":"subtitle","text":"Validation focused on whether the main user flows work reliably from login to plan execution.","textPreview":"Validation focused on whether the main user flows work reliably from login to plan execution.","textChars":93,"textLines":1,"bbox":[66,234,720,70]}
+{"kind":"shape","slide":8,"id":"10","role":"card panel: Authentication flow","shapeType":"roundRect","bbox":[84,388,355.3333333333333,220]}
+{"kind":"shape","slide":8,"id":"11","role":"card accent: Authentication flow","shapeType":"rect","bbox":[84,388,8,220]}
+{"kind":"shape","slide":8,"id":"12","role":"icon badge","shapeType":"ellipse","bbox":[106,412,54,54]}
+{"kind":"shape","slide":8,"id":"13","role":"icon glyph","shapeType":"rect","bbox":[122,441,6,12]}
+{"kind":"shape","slide":8,"id":"14","role":"icon glyph","shapeType":"rect","bbox":[131,433,6,20]}
+{"kind":"shape","slide":8,"id":"15","role":"icon glyph","shapeType":"rect","bbox":[140,426,6,27]}
+{"kind":"textbox","slide":8,"id":"16","role":"card label","text":"Authentication flow","textPreview":"Authentication flow","textChars":19,"textLines":1,"bbox":[172,410,247.33333333333331,28]}
+{"kind":"textbox","slide":8,"id":"17","role":"card body: Authentication flow","text":"Registration, login, protected\nroute access, password reset, and\npassword change were checked.","textPreview":"Registration, login, protected | route access, password reset, and | password change were checked.","textChars":94,"textLines":3,"bbox":[108,474,307.3333333333333,112]}
+{"kind":"shape","slide":8,"id":"18","role":"card panel: Planning flow","shapeType":"roundRect","bbox":[463.3333333333333,388,355.3333333333333,220]}
+{"kind":"shape","slide":8,"id":"19","role":"card accent: Planning flow","shapeType":"rect","bbox":[463.3333333333333,388,8,220]}
+{"kind":"shape","slide":8,"id":"20","role":"icon badge","shapeType":"ellipse","bbox":[485.3333333333333,412,54,54]}
+{"kind":"shape","slide":8,"id":"21","role":"icon glyph","shapeType":"ellipse","bbox":[498.3333333333333,430,10,10]}
+{"kind":"shape","slide":8,"id":"22","role":"icon glyph","shapeType":"ellipse","bbox":[516.3333333333333,439,10,10]}
+{"kind":"shape","slide":8,"id":"23","role":"icon glyph","shapeType":"rect","bbox":[507.3333333333333,437,19,3]}
+{"kind":"textbox","slide":8,"id":"24","role":"card label","text":"Planning flow","textPreview":"Planning flow","textChars":13,"textLines":1,"bbox":[551.3333333333333,410,247.33333333333331,28]}
+{"kind":"textbox","slide":8,"id":"25","role":"card body: Planning flow","text":"Profile creation, weekly plan\ngeneration, meal removal, plan\nclearing, and recipe-to-plan\nactions were tested.","textPreview":"Profile creation, weekly plan | generation, meal removal, plan | clearing, and recipe-to-plan | actions were tested.","textChars":110,"textLines":4,"bbox":[487.3333333333333,474,307.3333333333333,112]}
+{"kind":"shape","slide":8,"id":"26","role":"card panel: Support flow","shapeType":"roundRect","bbox":[842.6666666666666,388,355.3333333333333,220]}
+{"kind":"shape","slide":8,"id":"27","role":"card accent: Support flow","shapeType":"rect","bbox":[842.6666666666666,388,8,220]}
+{"kind":"shape","slide":8,"id":"28","role":"icon badge","shapeType":"ellipse","bbox":[864.6666666666666,412,54,54]}
+{"kind":"shape","slide":8,"id":"29","role":"icon glyph","shapeType":"roundRect","bbox":[877.6666666666666,427,26,13]}
+{"kind":"shape","slide":8,"id":"30","role":"icon glyph","shapeType":"roundRect","bbox":[882.6666666666666,436,26,13]}
+{"kind":"shape","slide":8,"id":"31","role":"icon glyph","shapeType":"roundRect","bbox":[887.6666666666666,445,20,10]}
+{"kind":"textbox","slide":8,"id":"32","role":"card label","text":"Support flow","textPreview":"Support flow","textChars":12,"textLines":1,"bbox":[930.6666666666666,410,247.33333333333331,28]}
+{"kind":"textbox","slide":8,"id":"33","role":"card body: Support flow","text":"Grocery updates, meal-prep\ncompletion, favourites, and history\nreuse were checked after plan\ngeneration.","textPreview":"Grocery updates, meal-prep | completion, favourites, and history | reuse were checked after plan | generation.","textChars":104,"textLines":4,"bbox":[866.6666666666666,474,307.3333333333333,112]}
+{"kind":"image","slide":9,"id":"2","role":"fallback art plate","path":"fallback-data-url","bbox":[0,0,1280,720]}
+{"kind":"shape","slide":9,"id":"3","role":"content contrast overlay","shapeType":"rect","bbox":[0,0,1280,720]}
+{"kind":"textbox","slide":9,"id":"4","role":"header","text":"08 LIMITS","textPreview":"08 LIMITS","textChars":9,"textLines":1,"bbox":[64,34,430,24]}
+{"kind":"textbox","slide":9,"id":"5","role":"header","text":"09 / 10","textPreview":"09 / 10","textChars":7,"textLines":1,"bbox":[1114,34,104,24]}
+{"kind":"shape","slide":9,"id":"6","role":"header rule","shapeType":"rect","bbox":[64,64,1152,2]}
+{"kind":"shape","slide":9,"id":"7","role":"header marker","shapeType":"ellipse","bbox":[57,57,16,16]}
+{"kind":"textbox","slide":9,"id":"8","role":"title","text":"Current limitations and next steps","textPreview":"Current limitations and next steps","textChars":34,"textLines":1,"bbox":[64,86,760,142]}
+{"kind":"textbox","slide":9,"id":"9","role":"subtitle","text":"The project is functional, but several areas still depend on simple rules or external services.","textPreview":"The project is functional, but several areas still depend on simple rules or external services.","textChars":95,"textLines":1,"bbox":[66,234,720,70]}
+{"kind":"shape","slide":9,"id":"10","role":"card panel: Rule-based planning","shapeType":"roundRect","bbox":[84,388,355.3333333333333,220]}
+{"kind":"shape","slide":9,"id":"11","role":"card accent: Rule-based planning","shapeType":"rect","bbox":[84,388,8,220]}
+{"kind":"shape","slide":9,"id":"12","role":"icon badge","shapeType":"ellipse","bbox":[106,412,54,54]}
+{"kind":"shape","slide":9,"id":"13","role":"icon glyph","shapeType":"rect","bbox":[122,441,6,12]}
+{"kind":"shape","slide":9,"id":"14","role":"icon glyph","shapeType":"rect","bbox":[131,433,6,20]}
+{"kind":"shape","slide":9,"id":"15","role":"icon glyph","shapeType":"rect","bbox":[140,426,6,27]}
+{"kind":"textbox","slide":9,"id":"16","role":"card label","text":"Rule-based planning","textPreview":"Rule-based planning","textChars":19,"textLines":1,"bbox":[172,410,247.33333333333331,28]}
+{"kind":"textbox","slide":9,"id":"17","role":"card body: Rule-based planning","text":"The current recommendation logic is\nprofile-driven filtering, not\nmachine learning.","textPreview":"The current recommendation logic is | profile-driven filtering, not | machine learning.","textChars":83,"textLines":3,"bbox":[108,474,307.3333333333333,112]}
+{"kind":"shape","slide":9,"id":"18","role":"card panel: External API dependency","shapeType":"roundRect","bbox":[463.3333333333333,388,355.3333333333333,220]}
+{"kind":"shape","slide":9,"id":"19","role":"card accent: External API dependency","shapeType":"rect","bbox":[463.3333333333333,388,8,220]}
+{"kind":"shape","slide":9,"id":"20","role":"icon badge","shapeType":"ellipse","bbox":[485.3333333333333,412,54,54]}
+{"kind":"shape","slide":9,"id":"21","role":"icon glyph","shapeType":"ellipse","bbox":[498.3333333333333,430,10,10]}
+{"kind":"shape","slide":9,"id":"22","role":"icon glyph","shapeType":"ellipse","bbox":[516.3333333333333,439,10,10]}
+{"kind":"shape","slide":9,"id":"23","role":"icon glyph","shapeType":"rect","bbox":[507.3333333333333,437,19,3]}
+{"kind":"textbox","slide":9,"id":"24","role":"card label","text":"External API dependency","textPreview":"External API dependency","textChars":23,"textLines":1,"bbox":[551.3333333333333,410,247.33333333333331,28]}
+{"kind":"textbox","slide":9,"id":"25","role":"card body: External API dependency","text":"Recipe quality and availability\nstill depend on Spoonacular search\nresults and API behaviour.","textPreview":"Recipe quality and availability | still depend on Spoonacular search | results and API behaviour.","textChars":93,"textLines":3,"bbox":[487.3333333333333,474,307.3333333333333,112]}
+{"kind":"shape","slide":9,"id":"26","role":"card panel: Future work","shapeType":"roundRect","bbox":[842.6666666666666,388,355.3333333333333,220]}
+{"kind":"shape","slide":9,"id":"27","role":"card accent: Future work","shapeType":"rect","bbox":[842.6666666666666,388,8,220]}
+{"kind":"shape","slide":9,"id":"28","role":"icon badge","shapeType":"ellipse","bbox":[864.6666666666666,412,54,54]}
+{"kind":"shape","slide":9,"id":"29","role":"icon glyph","shapeType":"roundRect","bbox":[877.6666666666666,427,26,13]}
+{"kind":"shape","slide":9,"id":"30","role":"icon glyph","shapeType":"roundRect","bbox":[882.6666666666666,436,26,13]}
+{"kind":"shape","slide":9,"id":"31","role":"icon glyph","shapeType":"roundRect","bbox":[887.6666666666666,445,20,10]}
+{"kind":"textbox","slide":9,"id":"32","role":"card label","text":"Future work","textPreview":"Future work","textChars":11,"textLines":1,"bbox":[930.6666666666666,410,247.33333333333331,28]}
+{"kind":"textbox","slide":9,"id":"33","role":"card body: Future work","text":"Next improvements include smarter\nrecommendations, better UX\nrefinement, and mobile support.","textPreview":"Next improvements include smarter | recommendations, better UX | refinement, and mobile support.","textChars":92,"textLines":3,"bbox":[866.6666666666666,474,307.3333333333333,112]}
+{"kind":"image","slide":10,"id":"2","role":"fallback art plate","path":"fallback-data-url","bbox":[0,0,1280,720]}
+{"kind":"shape","slide":10,"id":"3","role":"content contrast overlay","shapeType":"rect","bbox":[0,0,1280,720]}
+{"kind":"textbox","slide":10,"id":"4","role":"header","text":"09 CONCLUSION","textPreview":"09 CONCLUSION","textChars":13,"textLines":1,"bbox":[64,34,430,24]}
+{"kind":"textbox","slide":10,"id":"5","role":"header","text":"10 / 10","textPreview":"10 / 10","textChars":7,"textLines":1,"bbox":[1114,34,104,24]}
+{"kind":"shape","slide":10,"id":"6","role":"header rule","shapeType":"rect","bbox":[64,64,1152,2]}
+{"kind":"shape","slide":10,"id":"7","role":"header marker","shapeType":"ellipse","bbox":[57,57,16,16]}
+{"kind":"textbox","slide":10,"id":"8","role":"title","text":"Conclusion","textPreview":"Conclusion","textChars":10,"textLines":1,"bbox":[64,86,760,142]}
+{"kind":"textbox","slide":10,"id":"9","role":"subtitle","text":"SmartMeal demonstrates a working meal-planning prototype that connects profile data, recipe filtering, grocery support, and meal preparation into one workflow.","textPreview":"SmartMeal demonstrates a working meal-planning prototype that connects profile data, recipe filtering, grocery support, and meal preparation into one workflow.","textChars":159,"textLines":1,"bbox":[66,234,720,70]}
+{"kind":"shape","slide":10,"id":"10","role":"card panel: Working prototype","shapeType":"roundRect","bbox":[84,388,355.3333333333333,220]}
+{"kind":"shape","slide":10,"id":"11","role":"card accent: Working prototype","shapeType":"rect","bbox":[84,388,8,220]}
+{"kind":"shape","slide":10,"id":"12","role":"icon badge","shapeType":"ellipse","bbox":[106,412,54,54]}
+{"kind":"shape","slide":10,"id":"13","role":"icon glyph","shapeType":"rect","bbox":[122,441,6,12]}
+{"kind":"shape","slide":10,"id":"14","role":"icon glyph","shapeType":"rect","bbox":[131,433,6,20]}
+{"kind":"shape","slide":10,"id":"15","role":"icon glyph","shapeType":"rect","bbox":[140,426,6,27]}
+{"kind":"textbox","slide":10,"id":"16","role":"card label","text":"Working prototype","textPreview":"Working prototype","textChars":17,"textLines":1,"bbox":[172,410,247.33333333333331,28]}
+{"kind":"textbox","slide":10,"id":"17","role":"card body: Working prototype","text":"The system supports the user\njourney from account setup to\nweekly plan generation and\nfollow-through.","textPreview":"The system supports the user | journey from account setup to | weekly plan generation and | follow-through.","textChars":101,"textLines":4,"bbox":[108,474,307.3333333333333,112]}
+{"kind":"shape","slide":10,"id":"18","role":"card panel: Practical impact","shapeType":"roundRect","bbox":[463.3333333333333,388,355.3333333333333,220]}
+{"kind":"shape","slide":10,"id":"19","role":"card accent: Practical impact","shapeType":"rect","bbox":[463.3333333333333,388,8,220]}
+{"kind":"shape","slide":10,"id":"20","role":"icon badge","shapeType":"ellipse","bbox":[485.3333333333333,412,54,54]}
+{"kind":"shape","slide":10,"id":"21","role":"icon glyph","shapeType":"ellipse","bbox":[498.3333333333333,430,10,10]}
+{"kind":"shape","slide":10,"id":"22","role":"icon glyph","shapeType":"ellipse","bbox":[516.3333333333333,439,10,10]}
+{"kind":"shape","slide":10,"id":"23","role":"icon glyph","shapeType":"rect","bbox":[507.3333333333333,437,19,3]}
+{"kind":"textbox","slide":10,"id":"24","role":"card label","text":"Practical impact","textPreview":"Practical impact","textChars":16,"textLines":1,"bbox":[551.3333333333333,410,247.33333333333331,28]}
+{"kind":"textbox","slide":10,"id":"25","role":"card body: Practical impact","text":"SmartMeal reduces planning effort\nand improves grocery organization\nthrough a usable weekly structure.","textPreview":"SmartMeal reduces planning effort | and improves grocery organization | through a usable weekly structure.","textChars":102,"textLines":3,"bbox":[487.3333333333333,474,307.3333333333333,112]}
+{"kind":"shape","slide":10,"id":"26","role":"card panel: Academic contribution","shapeType":"roundRect","bbox":[842.6666666666666,388,355.3333333333333,220]}
+{"kind":"shape","slide":10,"id":"27","role":"card accent: Academic contribution","shapeType":"rect","bbox":[842.6666666666666,388,8,220]}
+{"kind":"shape","slide":10,"id":"28","role":"icon badge","shapeType":"ellipse","bbox":[864.6666666666666,412,54,54]}
+{"kind":"shape","slide":10,"id":"29","role":"icon glyph","shapeType":"roundRect","bbox":[877.6666666666666,427,26,13]}
+{"kind":"shape","slide":10,"id":"30","role":"icon glyph","shapeType":"roundRect","bbox":[882.6666666666666,436,26,13]}
+{"kind":"shape","slide":10,"id":"31","role":"icon glyph","shapeType":"roundRect","bbox":[887.6666666666666,445,20,10]}
+{"kind":"textbox","slide":10,"id":"32","role":"card label","text":"Academic contribution","textPreview":"Academic contribution","textChars":21,"textLines":1,"bbox":[930.6666666666666,410,247.33333333333331,28]}
+{"kind":"textbox","slide":10,"id":"33","role":"card body: Academic contribution","text":"The project shows how a full-stack\nweb system can solve an everyday\nplanning problem with clear scope.","textPreview":"The project shows how a full-stack | web system can solve an everyday | planning problem with clear scope.","textChars":102,"textLines":3,"bbox":[866.6666666666666,474,307.3333333333333,112]}

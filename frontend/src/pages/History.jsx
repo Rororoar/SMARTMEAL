@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { mealPlanApi, recipeApi } from "../api/client";
 import AddToPlanDialog from "../components/AddToPlanDialog";
@@ -20,67 +20,90 @@ export default function History() {
       .catch((err) => setError(err.message));
   }, []);
 
-  async function removeSaved(recipe) {
-    const data = await recipeApi.removeSaved(recipe.spoonacularId);
-    setSavedRecipes(data.savedRecipes);
+  async function toggleFavourite(recipe, isFavourite) {
+    setError("");
+    setStatus("");
+    try {
+      const data = isFavourite
+        ? await recipeApi.removeSaved(recipe.spoonacularId)
+        : await recipeApi.save(recipe);
+      setSavedRecipes(data.savedRecipes);
+      setStatus(isFavourite ? "Removed from favourite recipes." : "Added to favourite recipes.");
+    } catch (err) {
+      setError(err.message);
+    }
   }
 
-  function mealRows() {
-    return mealPlans.flatMap((plan) =>
-      plan.meals.map((meal) => ({
-        ...meal,
-        planId: plan._id,
-        weekStart: plan.weekStart
-      }))
-    );
-  }
+  const mealRows = useMemo(
+    () =>
+      mealPlans.flatMap((plan) =>
+        plan.meals.map((meal) => ({
+          ...meal,
+          planId: plan._id,
+          weekStart: plan.weekStart
+        }))
+      ),
+    [mealPlans]
+  );
 
   return (
     <main className="page-surface">
-      <section className="page-heading">
-        <div>
-          <p className="eyebrow">History</p>
-          <h2>Saved recipes and previous weekly plans.</h2>
+      <section className="panel-shell">
+        <div className="page-heading">
+          <div>
+            <h2>History</h2>
+            <p className="page-subtitle">Favourite recipes and previously planned meals.</p>
+          </div>
         </div>
+
+        {(error || status) && (
+          <div className="inline-messages">
+            {error && <p className="form-error inline-message">{error}</p>}
+            {status && <p className="form-status inline-message">{status}</p>}
+          </div>
+        )}
+
+        <section className="history-section">
+          <div className="section-title">
+            <h3>Favourite Recipes</h3>
+          </div>
+          <div className="recipe-grid">
+            {savedRecipes.map((recipe) => (
+              <RecipeTile
+                key={recipe.spoonacularId}
+                recipe={recipe}
+                onToggleFavourite={toggleFavourite}
+                isFavourite
+                secondaryAction={setSelectedRecipe}
+                secondaryLabel="Add To Plan"
+              />
+            ))}
+          </div>
+          {savedRecipes.length === 0 && <p className="empty-state">No favourite recipes yet.</p>}
+        </section>
+
+        <section className="history-section">
+          <div className="section-title">
+            <h3>Meals by Date</h3>
+          </div>
+          <div className="history-card-list">
+            {mealRows.map((meal) => (
+              <article key={meal._id || `${meal.planId}-${meal.date}-${meal.recipe?.spoonacularId}`} className="history-card">
+                <div className="history-card-meta">
+                  <strong>{new Date(meal.date).toLocaleDateString("en", { weekday: "short", month: "short", day: "numeric" })}</strong>
+                  <span>{meal.mealType}</span>
+                </div>
+                <Link to={`/recipes/${meal.recipe?.spoonacularId}`}>{meal.recipe?.title}</Link>
+                <button type="button" className="secondary-button" onClick={() => setSelectedRecipe(meal.recipe)}>
+                  Add To Plan
+                </button>
+              </article>
+            ))}
+          </div>
+          {mealRows.length === 0 && <p className="empty-state">No meal history yet.</p>}
+        </section>
       </section>
 
-      {error && <p className="form-error">{error}</p>}
-      {status && <p className="form-status">{status}</p>}
-
-      <section className="section-title">
-        <h3>Saved recipes</h3>
-        <p>Recipes kept for later planning.</p>
-      </section>
-      <section className="recipe-grid compact">
-        {savedRecipes.map((recipe) => (
-          <RecipeTile
-            key={recipe.spoonacularId}
-            recipe={recipe}
-            onSave={removeSaved}
-            buttonLabel="Remove"
-            secondaryAction={setSelectedRecipe}
-            secondaryLabel="Add to plan"
-          />
-        ))}
-      </section>
-
-      <section className="history-list">
-        <div className="section-title">
-          <h3>Meals by date</h3>
-          <p>Meals already added or generated in recent plans.</p>
-        </div>
-        {mealRows().map((meal) => (
-          <article key={meal._id || `${meal.planId}-${meal.date}-${meal.recipe?.spoonacularId}`} className="history-row meal-history-row">
-            <strong>{new Date(meal.date).toLocaleDateString()}</strong>
-            <span>{meal.mealType}</span>
-            <Link to={`/recipes/${meal.recipe?.spoonacularId}`}>{meal.recipe?.title}</Link>
-            <button type="button" className="secondary-button" onClick={() => setSelectedRecipe(meal.recipe)}>
-              Add To Plan
-            </button>
-          </article>
-        ))}
-        {mealRows().length === 0 && <p className="empty-state">No Meal History Yet.</p>}
-      </section>
       <AddToPlanDialog
         recipe={selectedRecipe}
         open={Boolean(selectedRecipe)}

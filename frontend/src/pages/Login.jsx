@@ -2,6 +2,9 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
+const FOOTER_HEADING = "SmartMeal - Your healthy meal planning companion";
+const FOOTER_TAGLINE = `Eat well, live well, reduce waste ${"\u{1F331}"}`;
+
 export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -24,45 +27,53 @@ export default function Login() {
   }
 
   return (
-    <main className="auth-page">
-      <section className="auth-visual" aria-hidden="true">
-        <img
-          src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80"
-          alt=""
-        />
-      </section>
-      <section className="auth-form">
-        <p className="eyebrow">SmartMeal</p>
-        <h1>Plan the week before hunger decides.</h1>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Email
-            <input
-              type="email"
-              value={form.email}
-              onChange={(event) => setForm({ ...form, email: event.target.value })}
-              required
-            />
-          </label>
-          <label>
-            Password
-            <input
-              type="password"
-              value={form.password}
-              onChange={(event) => setForm({ ...form, password: event.target.value })}
-              required
-            />
-          </label>
-          {error && <p className="form-error">{error}</p>}
-          <button type="submit" disabled={loading}>
-            {loading ? "Signing in..." : "Log in"}
-          </button>
-        </form>
-        <p>
-          New to SmartMeal? <Link to="/register">Create an account</Link>
-        </p>
-      </section>
-    </main>
+    <div className="auth-shell">
+      <main className="auth-page">
+        <section className="auth-visual" aria-hidden="true">
+          <img
+            src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80"
+            alt=""
+          />
+        </section>
+        <section className="auth-form">
+          <p className="eyebrow">SmartMeal</p>
+          <h1>Plan the week before hunger decides.</h1>
+          <form onSubmit={handleSubmit}>
+            <label>
+              Email
+              <input
+                type="email"
+                value={form.email}
+                onChange={(event) => setForm({ ...form, email: event.target.value })}
+                required
+              />
+            </label>
+            <label>
+              Password
+              <input
+                type="password"
+                value={form.password}
+                onChange={(event) => setForm({ ...form, password: event.target.value })}
+                required
+              />
+            </label>
+            {error && <p className="form-error">{error}</p>}
+            <button type="submit" disabled={loading}>
+              {loading ? "Signing in..." : "Log in"}
+            </button>
+          </form>
+          <p>
+            New to SmartMeal? <Link to="/register">Create an account</Link>
+          </p>
+          <p>
+            <Link to="/reset-password">Forgot password?</Link>
+          </p>
+        </section>
+      </main>
+      <footer className="site-footer auth-footer">
+        <p>{FOOTER_HEADING}</p>
+        <p>{FOOTER_TAGLINE}</p>
+      </footer>
+    </div>
   );
 }
-

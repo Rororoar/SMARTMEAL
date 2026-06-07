@@ -1,6 +1,19 @@
 import { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { mealPlanApi } from "../api/client";
 import MealCalendar from "../components/MealCalendar";
+
+function formatWeekLabel(weekStart) {
+  if (!weekStart) return "This week";
+  const start = new Date(weekStart);
+  const end = new Date(start);
+  end.setDate(start.getDate() + 6);
+
+  return `${start.toLocaleDateString("en", { month: "short", day: "numeric" })} - ${end.toLocaleDateString("en", {
+    month: "short",
+    day: "numeric"
+  })}`;
+}
 
 export default function Dashboard() {
   const [mealPlan, setMealPlan] = useState(null);
@@ -17,12 +30,15 @@ export default function Dashboard() {
       .finally(() => setLoading(false));
   }, []);
 
-  const totals = useMemo(() => {
+  const summary = useMemo(() => {
     const meals = mealPlan?.meals || [];
-    const calories = meals.reduce((sum, meal) => sum + Number(meal.recipe?.nutrition?.calories || 0), 0);
     const groceries = mealPlan?.groceryItems?.length || 0;
-    const tasks = mealPlan?.prepTasks?.filter((task) => !task.done).length || 0;
-    return { calories, groceries, tasks };
+    const prepLeft = mealPlan?.prepTasks?.filter((task) => !task.done).length || 0;
+    return {
+      meals: meals.length,
+      groceries,
+      prepLeft
+    };
   }, [mealPlan]);
 
   async function generatePlan() {
@@ -32,16 +48,12 @@ export default function Dashboard() {
     try {
       const data = await mealPlanApi.generate();
       setMealPlan(data.mealPlan);
+      setStatus("Weekly meal plan generated.");
     } catch (err) {
       setError(err.message);
     } finally {
       setGenerating(false);
     }
-  }
-
-  async function togglePrep(task) {
-    const data = await mealPlanApi.togglePrep(mealPlan._id, task._id, !task.done);
-    setMealPlan(data.mealPlan);
   }
 
   async function removeMeal(meal) {
@@ -92,61 +104,70 @@ export default function Dashboard() {
 
   return (
     <main className="page-surface">
-      <section className="page-heading">
-        <div>
-          <p className="eyebrow">Weekly Plan</p>
-          <h2>Meals, groceries and prep tasks in one flow.</h2>
-        </div>
-        <div className="heading-actions">
-          <button type="button" onClick={generatePlan} disabled={generating}>
-            {generating ? "Generating..." : "Generate meal plan"}
-          </button>
-          {mealPlan?.meals?.length > 0 && (
-            <button type="button" className="secondary-button danger-button" onClick={clearWeek}>
-              Clear week
-            </button>
-          )}
-        </div>
-      </section>
-
-      {error && <p className="form-error">{error}</p>}
-      {status && <p className="form-status">{status}</p>}
-
-      <section className="metrics-band" aria-label="Plan summary">
-        <div>
-          <span>{mealPlan?.meals?.length || 0}</span>
-          <p>planned meals</p>
-        </div>
-        <div>
-          <span>{totals.groceries}</span>
-          <p>grocery items</p>
-        </div>
-        <div>
-          <span>{totals.tasks}</span>
-          <p>prep tasks left</p>
-        </div>
-        <div>
-          <span>{totals.calories || 0}</span>
-          <p>weekly kcal</p>
-        </div>
-      </section>
-
-      <MealCalendar mealPlan={mealPlan} onRemoveMeal={removeMeal} onClearDay={clearDay} />
-
-      {mealPlan?.prepTasks?.length > 0 && (
-        <section className="task-list">
-          <div className="section-title">
-            <h3>Prep tasks</h3>
-            <p>Small actions that keep the week moving.</p>
+      <section className="panel-shell">
+        <div className="page-heading calendar-heading">
+          <div>
+            <h2>Weekly Meal Plan</h2>
+            <p className="page-subtitle">
+              Generate a full week automatically from your Profile preferences, allergies and goals.
+            </p>
           </div>
-          {mealPlan.prepTasks.slice(0, 8).map((task) => (
-            <label className="check-row" key={task._id}>
-              <input type="checkbox" checked={task.done} onChange={() => togglePrep(task)} />
-              <span>{task.label}</span>
-            </label>
-          ))}
-        </section>
-      )}
+          <div className="calendar-toolbar">
+            <div className="calendar-week-pill">{formatWeekLabel(mealPlan?.weekStart)}</div>
+            <button type="button" onClick={generatePlan} disabled={generating}>
+              {generating ? "Generating..." : "Generate Meal Plan"}
+            </button>
+            {mealPlan?.meals?.length > 0 && (
+              <button type="button" className="secondary-button" onClick={clearWeek}>
+                Clear Week
+              </button>
+            )}
+          </div>
+        </div>
+
+        {(error || status) && (
+          <div className="inline-messages">
+            {error && <p className="form-error inline-message">{error}</p>}
+            {status && <p className="form-status inline-message">{status}</p>}
+          </div>
+        )}
+
+        <div className="calendar-summary">
+          <article>
+            <span>{summary.meals}</span>
+            <p>Dishes planned</p>
+          </article>
+          <article>
+            <span>{summary.groceries}</span>
+            <p>Grocery items</p>
+          </article>
+          <article>
+            <span>{summary.prepLeft}</span>
+            <p>Prep tasks left</p>
+          </article>
+          <article>
+            <Link to="/history">View history</Link>
+            <p>Open favourite recipes and past weeks.</p>
+          </article>
+        </div>
+
+        {!mealPlan?.meals?.length ? (
+          <section className="calendar-empty-state">
+            <h3>No meals planned yet</h3>
+            <p>Click Generate Meal Plan to fill the week automatically. Adding recipes manually is optional.</p>
+            <div className="recipe-actions">
+              <button type="button" onClick={generatePlan} disabled={generating}>
+                {generating ? "Generating..." : "Generate Meal Plan"}
+              </button>
+              <Link to="/recipes" className="secondary-link-button">
+                Browse Recipes
+              </Link>
+            </div>
+          </section>
+        ) : (
+          <MealCalendar mealPlan={mealPlan} onRemoveMeal={removeMeal} onClearDay={clearDay} />
+        )}
+      </section>
     </main>
   );
 }

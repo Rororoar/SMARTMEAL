@@ -5,10 +5,12 @@ import Dashboard from "./pages/Dashboard";
 import Grocery from "./pages/Grocery";
 import History from "./pages/History";
 import Login from "./pages/Login";
+import MealPrep from "./pages/MealPrep";
 import Profile from "./pages/Profile";
 import RecipeDetail from "./pages/RecipeDetail";
 import Recipes from "./pages/Recipes";
 import Register from "./pages/Register";
+import ResetPassword from "./pages/ResetPassword";
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
@@ -29,6 +31,7 @@ export default function App() {
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
       <Route
         path="/"
         element={
@@ -42,6 +45,7 @@ export default function App() {
         <Route path="recipes" element={<Recipes />} />
         <Route path="recipes/:id" element={<RecipeDetail />} />
         <Route path="grocery" element={<Grocery />} />
+        <Route path="meal-prep" element={<MealPrep />} />
         <Route path="history" element={<History />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />

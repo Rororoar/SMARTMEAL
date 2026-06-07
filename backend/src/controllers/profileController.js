@@ -1,4 +1,5 @@
 const Profile = require("../models/Profile");
+const User = require("../models/User");
 const asyncHandler = require("../utils/asyncHandler");
 
 const getProfile = asyncHandler(async (req, res) => {
@@ -8,12 +9,20 @@ const getProfile = asyncHandler(async (req, res) => {
     { upsert: true, new: true }
   );
 
-  res.json({ profile });
+  res.json({
+    profile,
+    user: {
+      id: req.user._id,
+      name: req.user.name,
+      email: req.user.email
+    }
+  });
 });
 
 const updateProfile = asyncHandler(async (req, res) => {
   const allowed = [
     "dietaryPreferences",
+    "healthGoals",
     "allergies",
     "dislikedIngredients",
     "preferredIngredients",
@@ -34,8 +43,24 @@ const updateProfile = asyncHandler(async (req, res) => {
     { upsert: true, new: true, runValidators: true }
   );
 
-  res.json({ profile });
+  let user = req.user;
+
+  if (typeof req.body.name === "string" && req.body.name.trim()) {
+    user = await User.findByIdAndUpdate(
+      req.user._id,
+      { $set: { name: req.body.name.trim() } },
+      { new: true, runValidators: true }
+    );
+  }
+
+  res.json({
+    profile,
+    user: {
+      id: user._id,
+      name: user.name,
+      email: user.email
+    }
+  });
 });
 
 module.exports = { getProfile, updateProfile };
-

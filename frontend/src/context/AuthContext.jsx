@@ -3,11 +3,18 @@ import { authApi } from "../api/client";
 
 const AuthContext = createContext(null);
 
-export function AuthProvider({ children }) {
-  const [user, setUser] = useState(() => {
+function readStoredUser() {
+  try {
     const stored = localStorage.getItem("smartmeal_user");
     return stored ? JSON.parse(stored) : null;
-  });
+  } catch {
+    localStorage.removeItem("smartmeal_user");
+    return null;
+  }
+}
+
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(readStoredUser);
   const [loading, setLoading] = useState(Boolean(localStorage.getItem("smartmeal_token")));
 
   useEffect(() => {
@@ -33,10 +40,14 @@ export function AuthProvider({ children }) {
 
   async function handleAuth(request) {
     const data = await request;
+    updateUser(data.user);
     localStorage.setItem("smartmeal_token", data.token);
-    localStorage.setItem("smartmeal_user", JSON.stringify(data.user));
-    setUser(data.user);
     return data;
+  }
+
+  function updateUser(nextUser) {
+    localStorage.setItem("smartmeal_user", JSON.stringify(nextUser));
+    setUser(nextUser);
   }
 
   const value = useMemo(
@@ -53,7 +64,8 @@ export function AuthProvider({ children }) {
         localStorage.removeItem("smartmeal_token");
         localStorage.removeItem("smartmeal_user");
         setUser(null);
-      }
+      },
+      updateUser
     }),
     [user, loading]
   );
@@ -68,4 +80,3 @@ export function useAuth() {
   }
   return context;
 }
-

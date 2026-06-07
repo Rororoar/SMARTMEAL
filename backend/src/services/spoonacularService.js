@@ -185,6 +185,7 @@ async function searchRecipes(filters = {}) {
       cuisine: filters.cuisine,
       diet: filters.diet,
       intolerances: filters.intolerances,
+      includeIngredients: filters.includeIngredients,
       excludeIngredients: filters.excludeIngredients,
       maxReadyTime: filters.maxReadyTime,
       minProtein: filters.minProtein,

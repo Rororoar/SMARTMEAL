@@ -49,6 +49,12 @@ async function apiFetch(path, options = {}) {
 }
 
 export const authApi = {
+  requestRegistrationOtp(payload) {
+    return apiFetch("/auth/register/request-otp", {
+      method: "POST",
+      body: JSON.stringify(payload)
+    });
+  },
   register(payload) {
     return apiFetch("/auth/register", {
       method: "POST",
@@ -57,6 +63,24 @@ export const authApi = {
   },
   login(payload) {
     return apiFetch("/auth/login", {
+      method: "POST",
+      body: JSON.stringify(payload)
+    });
+  },
+  requestPasswordOtp(payload) {
+    return apiFetch("/auth/password/request-otp", {
+      method: "POST",
+      body: JSON.stringify(payload)
+    });
+  },
+  resetPassword(payload) {
+    return apiFetch("/auth/password/reset", {
+      method: "POST",
+      body: JSON.stringify(payload)
+    });
+  },
+  changePassword(payload) {
+    return apiFetch("/auth/password/change", {
       method: "POST",
       body: JSON.stringify(payload)
     });

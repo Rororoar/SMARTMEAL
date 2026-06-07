@@ -7,3 +7,6 @@ frontend/.env
 npm-debug.log*
 .DS_Store
 
+# Local report/export workspace, not needed for app deployment
+fyp/
+tools/

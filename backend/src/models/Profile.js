@@ -12,6 +12,10 @@ const profileSchema = new mongoose.Schema(
       type: [String],
       default: []
     },
+    healthGoals: {
+      type: [String],
+      default: []
+    },
     allergies: {
       type: [String],
       default: []
@@ -38,11 +42,10 @@ const profileSchema = new mongoose.Schema(
     },
     mealsPerDay: {
       type: [String],
-      default: ["lunch", "dinner"]
+      default: ["breakfast", "lunch", "dinner"]
     }
   },
   { timestamps: true }
 );
 
 module.exports = mongoose.model("Profile", profileSchema);
-
