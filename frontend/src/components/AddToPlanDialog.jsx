@@ -1,8 +1,10 @@
 import { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { mealPlanApi } from "../api/client";
 import { formatDateKey, startOfWeek, weekDateOptions } from "../utils/week";
 
 export default function AddToPlanDialog({ recipe, open, onClose, onAdded, onError }) {
+  const navigate = useNavigate();
   const dates = useMemo(() => weekDateOptions(), []);
   const [date, setDate] = useState(dates[0]?.value || new Date().toISOString());
   const [mealType, setMealType] = useState("dinner");
@@ -23,6 +25,12 @@ export default function AddToPlanDialog({ recipe, open, onClose, onAdded, onErro
       });
       onAdded?.(data.message || "Recipe added to this week's plan.");
       onClose();
+      navigate("/", {
+        state: {
+          status: data.message || "Recipe added to this week's plan.",
+          mealPlan: data.mealPlan
+        }
+      });
     } catch (err) {
       onError?.(err.message);
     } finally {

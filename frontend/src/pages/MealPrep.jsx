@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { mealPlanApi } from "../api/client";
+import { formatDateKey } from "../utils/week";
 
 function startOfDay(value) {
   const date = new Date(value);
@@ -18,9 +19,18 @@ function estimateMinutes(task) {
 
 function groupTasks(tasks) {
   return tasks.reduce((acc, task) => {
-    const key = startOfDay(task.date).toISOString();
+    const key = formatDateKey(startOfDay(task.date));
     acc[key] = acc[key] || [];
     acc[key].push(task);
+    return acc;
+  }, {});
+}
+
+function groupMeals(meals) {
+  return meals.reduce((acc, meal) => {
+    const key = formatDateKey(startOfDay(meal.date));
+    acc[key] = acc[key] || [];
+    acc[key].push(meal);
     return acc;
   }, {});
 }
@@ -50,16 +60,18 @@ export default function MealPrep() {
         setMealPlan(data.mealPlan);
         const firstTaskDate = data.mealPlan?.prepTasks?.[0]?.date;
         if (firstTaskDate) {
-          setSelectedDay(startOfDay(firstTaskDate).toISOString());
+          setSelectedDay(formatDateKey(startOfDay(firstTaskDate)));
         }
       })
       .catch((err) => setError(err.message));
   }, []);
 
   const groupedTasks = useMemo(() => groupTasks(mealPlan?.prepTasks || []), [mealPlan]);
+  const groupedMeals = useMemo(() => groupMeals(mealPlan?.meals || []), [mealPlan]);
   const dayKeys = useMemo(() => Object.keys(groupedTasks).sort(), [groupedTasks]);
   const activeDay = selectedDay || dayKeys[0] || "";
   const activeTasks = activeDay ? groupedTasks[activeDay] || [] : [];
+  const activeMeals = activeDay ? groupedMeals[activeDay] || [] : [];
 
   const totals = useMemo(() => {
     const tasks = mealPlan?.prepTasks || [];
@@ -175,6 +187,28 @@ export default function MealPrep() {
                   </button>
                 </article>
               ))}
+            </section>
+
+            <section className="history-section">
+              <div className="section-title">
+                <h3>Recipe Steps</h3>
+              </div>
+              <div className="history-card-list">
+                {activeMeals.map((meal) => (
+                  <article key={meal._id || `${meal.date}-${meal.mealType}`} className="history-card">
+                    <div className="history-card-meta">
+                      <strong>{meal.recipe?.title}</strong>
+                      <span>{meal.mealType}</span>
+                    </div>
+                    <ol className="step-list">
+                      {(meal.recipe?.steps || []).map((step) => (
+                        <li key={`${meal._id || meal.recipe?.spoonacularId}-${step.number}`}>{step.step}</li>
+                      ))}
+                    </ol>
+                    {!meal.recipe?.steps?.length && <p className="empty-state">No recipe steps available for this meal yet.</p>}
+                  </article>
+                ))}
+              </div>
             </section>
           </>
         )}

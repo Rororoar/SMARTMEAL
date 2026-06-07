@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { mealPlanApi } from "../api/client";
 import MealCalendar from "../components/MealCalendar";
 
@@ -16,6 +17,8 @@ function formatWeekLabel(weekStart) {
 }
 
 export default function Dashboard() {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [mealPlan, setMealPlan] = useState(null);
   const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
@@ -29,6 +32,20 @@ export default function Dashboard() {
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
   }, []);
+
+  useEffect(() => {
+    if (!location.state) return;
+
+    if (location.state.mealPlan) {
+      setMealPlan(location.state.mealPlan);
+    }
+
+    if (location.state.status) {
+      setStatus(location.state.status);
+    }
+
+    navigate(location.pathname, { replace: true, state: null });
+  }, [location, navigate]);
 
   const summary = useMemo(() => {
     const meals = mealPlan?.meals || [];
