@@ -35,6 +35,7 @@ function createTransporter() {
     host: config.host,
     port: config.port,
     secure: config.secure,
+    family: 4,
     auth: {
       user: config.user,
       pass: config.pass
