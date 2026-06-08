@@ -96,7 +96,7 @@ export default function MealCalendar({ mealPlan, onRemoveMeal, onClearDay }) {
             <section className="calendar-day-column" key={dayKey}>
               <div className="calendar-day-header">
                 <div>
-                  <h3>{headerFormatter.format(day)}</h3>
+                  <span className="calendar-mobile-day">{headerFormatter.format(day)}</span>
                   <p>{day.toLocaleDateString("en", { month: "short", day: "numeric" })}</p>
                 </div>
                 {dayHasMeals && (

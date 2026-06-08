@@ -5,6 +5,7 @@ dist/
 backend/.env
 frontend/.env
 npm-debug.log*
+tmp/vite-frontend*.log
 .DS_Store
 
 # Local report/export workspace, not needed for app deployment

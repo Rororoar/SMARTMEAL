@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { Icon } from "./Icons";
@@ -16,6 +17,17 @@ const primaryLinks = [
 export default function Layout() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const [compactHeader, setCompactHeader] = useState(false);
+
+  useEffect(() => {
+    function handleScroll() {
+      setCompactHeader(window.scrollY > 72);
+    }
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   function handleLogout() {
     logout();
@@ -24,7 +36,7 @@ export default function Layout() {
 
   return (
     <div className="app-shell">
-      <header className="top-header">
+      <header className={`top-header${compactHeader ? " is-compact" : ""}`}>
         <div className="header-bar">
           <div className="brand-lockup">
             <Icon name="leaf" className="brand-mark" />

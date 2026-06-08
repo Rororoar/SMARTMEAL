@@ -175,8 +175,18 @@ label {
   gap: 1rem;
   justify-content: space-between;
   margin: 0 auto;
-  max-width: 1120px;
+  max-height: 118px;
+  max-width: 1600px;
   padding: 1rem 1.25rem 0.8rem;
+  overflow: hidden;
+  transition: max-height 220ms ease, opacity 180ms ease, padding 220ms ease;
+}
+
+.top-header.is-compact .header-bar {
+  max-height: 0;
+  opacity: 0;
+  padding-bottom: 0;
+  padding-top: 0;
 }
 
 .brand-lockup {
@@ -250,6 +260,12 @@ button.header-action-button {
   margin: 0 auto 0.85rem;
   max-width: 660px;
   padding: 0.15rem;
+  transition: margin 220ms ease;
+}
+
+.top-header.is-compact .top-nav {
+  margin-bottom: 0.45rem;
+  margin-top: 0.45rem;
 }
 
 .top-nav a {
@@ -283,12 +299,12 @@ button.header-action-button {
 
 .page-surface {
   background: linear-gradient(180deg, #f4f5f1 0%, #eef0eb 100%);
-  padding: 1.5rem 1.5rem 2.5rem;
+  padding: 1.5rem clamp(0.75rem, 2vw, 1.25rem) 2.5rem;
 }
 
 .panel-shell {
   margin: 0 auto;
-  max-width: 1280px;
+  max-width: none;
   width: 100%;
 }
 
@@ -429,8 +445,8 @@ button.header-action-button {
 
 .calendar-board-headings {
   display: grid;
-  gap: 0.8rem;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.65rem;
+  grid-template-columns: repeat(7, minmax(148px, 1fr));
   margin-bottom: 0.45rem;
 }
 
@@ -445,8 +461,8 @@ button.header-action-button {
 
 .calendar-board-grid {
   display: grid;
-  gap: 0.9rem;
-  grid-template-columns: repeat(7, minmax(168px, 1fr));
+  gap: 0.65rem;
+  grid-template-columns: repeat(7, minmax(148px, 1fr));
   overflow-x: auto;
   padding-bottom: 0.5rem;
 }
@@ -454,28 +470,40 @@ button.header-action-button {
 .calendar-day-column {
   display: grid;
   gap: 0.6rem;
-  min-width: 168px;
+  min-width: 0;
 }
 
 .calendar-day-header {
   align-items: center;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--line);
+  border-radius: 10px;
   display: flex;
+  gap: 0.45rem;
   justify-content: space-between;
+  min-height: 42px;
+  padding: 0.45rem 0.55rem;
 }
 
-.calendar-day-header h3,
+.calendar-mobile-day {
+  color: var(--accent-strong);
+  display: none;
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
 .calendar-day-header p,
 .calendar-slot-label {
   margin: 0;
 }
 
-.calendar-day-header h3 {
-  font-size: 1.12rem;
-}
-
 .calendar-day-header p {
   color: var(--muted);
-  font-size: 0.97rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
 }
 
 .calendar-slot-list {
@@ -553,11 +581,13 @@ button.header-action-button {
 
 .slot-text-button {
   border-radius: 0;
-  font-size: 0.9rem;
+  color: var(--accent-strong);
+  font-size: 0.82rem;
   font-weight: 700;
   justify-content: flex-start;
   min-height: 0;
   padding: 0;
+  white-space: nowrap;
 }
 
 .recipe-search-shell {
@@ -1287,6 +1317,10 @@ button.header-action-button {
 
   .calendar-board-grid {
     grid-template-columns: repeat(2, minmax(260px, 1fr));
+  }
+
+  .calendar-mobile-day {
+    display: block;
   }
 
   .auth-page {
