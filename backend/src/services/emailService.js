@@ -40,11 +40,20 @@ function createTransporter() {
     port: config.port,
     secure: config.secure,
     family: 4,
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
     auth: {
       user: config.user,
       pass: config.pass
     }
   });
+}
+
+function emailDeliveryError(error) {
+  const wrapped = new Error(`OTP email could not be sent: ${error.message}`);
+  wrapped.statusCode = 502;
+  return wrapped;
 }
 
 async function sendOtpEmail({ to, code, purpose }) {
@@ -65,12 +74,16 @@ async function sendOtpEmail({ to, code, purpose }) {
 
   const config = emailConfig();
   const transporter = createTransporter();
-  await transporter.sendMail({
-    from: config.from,
-    to,
-    subject: label,
-    text
-  });
+  try {
+    await transporter.sendMail({
+      from: config.from,
+      to,
+      subject: label,
+      text
+    });
+  } catch (error) {
+    throw emailDeliveryError(error);
+  }
 
   return { delivered: true };
 }

@@ -1,4 +1,5 @@
 const bcrypt = require("bcryptjs");
+const mongoose = require("mongoose");
 const User = require("../models/User");
 const Profile = require("../models/Profile");
 const asyncHandler = require("../utils/asyncHandler");
@@ -15,6 +16,14 @@ function authResponse(user) {
       email: user.email
     }
   };
+}
+
+function ensureDatabaseReady() {
+  if (mongoose.connection.readyState !== 1) {
+    const error = new Error("Database is not connected. Try again after the backend reconnects to MongoDB.");
+    error.statusCode = 503;
+    throw error;
+  }
 }
 
 const register = asyncHandler(async (req, res) => {
@@ -41,6 +50,8 @@ const register = asyncHandler(async (req, res) => {
     throw new Error("OTP is required to create an account");
   }
 
+  ensureDatabaseReady();
+
   const existing = await User.findOne({ email });
   if (existing) {
     res.status(409);
@@ -63,6 +74,8 @@ const requestRegistrationOtp = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Enter a valid email address");
   }
+
+  ensureDatabaseReady();
 
   const existing = await User.findOne({ email });
   if (existing) {
@@ -91,6 +104,8 @@ const login = asyncHandler(async (req, res) => {
     throw new Error("Enter a valid email address");
   }
 
+  ensureDatabaseReady();
+
   const user = await User.findOne({ email });
   const valid = user ? await bcrypt.compare(password, user.passwordHash) : false;
 
@@ -109,6 +124,8 @@ const requestPasswordOtp = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Enter a valid email address");
   }
+
+  ensureDatabaseReady();
 
   const user = await User.findOne({ email });
   if (!user) {
@@ -137,6 +154,8 @@ const resetPassword = asyncHandler(async (req, res) => {
     throw new Error("New password must be at least 8 characters");
   }
 
+  ensureDatabaseReady();
+
   await verifyOtp(email, "password_reset", otp);
 
   const passwordHash = await bcrypt.hash(newPassword, 12);
@@ -157,6 +176,8 @@ const changePassword = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("New password must be at least 8 characters");
   }
+
+  ensureDatabaseReady();
 
   const user = await User.findById(req.user._id);
 

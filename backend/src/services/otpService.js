@@ -1,4 +1,5 @@
 const bcrypt = require("bcryptjs");
+const mongoose = require("mongoose");
 const OtpToken = require("../models/OtpToken");
 const { ensureOtpEmailReady, sendOtpEmail } = require("./emailService");
 const { normalizeEmail } = require("../utils/email");
@@ -13,8 +14,17 @@ function otpError(message) {
   return error;
 }
 
+function ensureOtpStorageReady() {
+  if (mongoose.connection.readyState !== 1) {
+    const error = new Error("Database is not connected. OTP cannot be created or verified yet.");
+    error.statusCode = 503;
+    throw error;
+  }
+}
+
 async function issueOtp(email, purpose) {
   ensureOtpEmailReady();
+  ensureOtpStorageReady();
 
   const normalizedEmail = normalizeEmail(email);
   const code = createOtpCode();
@@ -37,6 +47,8 @@ async function issueOtp(email, purpose) {
 }
 
 async function verifyOtp(email, purpose, code) {
+  ensureOtpStorageReady();
+
   const normalizedEmail = normalizeEmail(email);
   const token = await OtpToken.findOne({
     email: normalizedEmail,
